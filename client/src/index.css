@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,500&family=Poppins:ital,wght@0,400;0,500;1,600&family=Righteous&display=swap');
+
+/* :root{
+    font-family: Poppins;
+} */
+
+body{
+    margin: 0;
+    font-family: Poppins !important;
+}
+
+.sectionTitle{
+    font-weight: bold;
+    margin: 0 0px 0 50px;
+}
+
+.headingLine{
+    margin-left: 10px;
+    margin-right: 15px;
+    height: 5px;
+    width: 100%;
+    background-color: gainsboro;
+}
+
+.headingContainer{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: orange;
+}
+
+.sectionContainer{
+    width: 1350px;
+    /* border: 2px solid red; */
+    margin: auto;
+    height: 800px;
+}

@@ -1,0 +1,59 @@
+#sideMenu{
+    width: 270px;
+    height: 400px;
+    /* box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.5); */
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.nav-item1{
+    color: black !important;
+    border-bottom: 0.1px solid gainsboro !important;
+    height: 44.3px !important;
+    border-radius: 0% !important;
+}
+
+.nav-pills .nav-link{
+    border-radius: 0 !important;
+}
+
+.nav-item:focus{
+    color: white !important;
+    background-color: purple !important;
+}
+
+.nav-pills .nav-link.active{
+    color: white !important;
+    background-color: orange !important;
+}
+
+.nav-pills .nav-link:hover{
+    background-color: gainsboro;
+    /* transform: scale(1.2) !important; */
+}
+
+.mButton{
+    background-color: white;
+    color: #b52816;
+    width: 270px;
+    height: 60px;
+    border: 5px solid #b52816;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    transition: all ease-in-out 0.4s;
+    background-image: url("../images/MesuesPerShqiperine.svg");
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mButton:hover{
+    background-color: #b52816;
+    color: white;
+    background-image: url("../images/whiteMesues.svg");
+    cursor: pointer;
+}
+

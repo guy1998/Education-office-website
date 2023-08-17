@@ -1,0 +1,28 @@
+#mainField{
+    width: 1400px;
+    height: 800px;
+    margin: auto auto;
+    /* box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.3); */
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+  }
+  
+  #contentDisplay{
+    margin: 20px 15px 0 0;
+    width: 925px;
+    
+  }
+
+  #menuTitle{
+    margin: 20px 0 20px 10px;
+    color: black;
+  }
+
+  .sideOptions{
+    /* border: 2px solid rebeccapurple; */
+    display: flex;
+    flex-direction: column;
+    margin: 00px 0 0 30px;
+  }

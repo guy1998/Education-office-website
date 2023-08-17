@@ -1,0 +1,113 @@
+.footerContainer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 250px;
+    background-color:  black;
+    border-top: 15px solid orange;
+    color: white;
+    line-height: 40px;
+}
+
+.footerContainer a{
+    color: white;
+    text-decoration: none;
+}
+
+.footerContainer a:hover{
+    color: gold;
+    cursor: pointer;
+}
+
+.footerColumn ul{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#address{
+    padding-left: 25px;
+    background-image: url("../images/pin\ \(1\).png");
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 0%;
+}
+
+#email{
+    padding-left: 25px;
+    background-image: url("../images/email\ \(1\).png");
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 0%;
+}
+
+#phoneNumber{
+    padding-left: 25px;
+    background-image: url("../images/phone-call.png");
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 0%;
+}
+
+.bottomLine{
+    background-color: rgb(180, 119, 6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+#facebook{
+    background-image: url("../images/facebook-app-symbol.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+    width: 35px;
+    height: 35px;
+    background-color: black;
+    border: none;
+    border-radius: 50%;
+    transition: all ease-in-out 0.2s;
+    margin: 0 15px;
+}
+
+#facebook:hover{
+    background-image: url("../images/facebook-app-symbol\ \(1\).png");
+    box-shadow: 0 0 10px 5px #FFD700;
+}
+
+#instagram{
+    background-image: url("../images/instagram.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+    width: 35px;
+    height: 35px;
+    background-color: black;
+    border: none;
+    border-radius: 50%;
+    transition: all ease-in-out 0.2s;
+}
+
+#instagram:hover{
+    background-image: url("../images/instagram\ \(1\).png");
+    box-shadow: 0 0 10px 5px #FFD700;
+}
+
+#linkedIn{
+    background-image: url("../images/linkedin.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+    width: 35px;
+    height: 35px;
+    background-color: black;
+    border: none;
+    border-radius: 50%;
+    transition: all ease-in-out 0.2s;
+}
+
+#linkedIn:hover{
+    background-image: url("../images/linkedin\ \(1\).png");
+    box-shadow: 0 0 10px 5px #FFD700;
+}

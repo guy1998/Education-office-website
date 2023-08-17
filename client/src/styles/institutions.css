@@ -1,0 +1,89 @@
+.mainContainer{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.listOfThings{
+    overflow: auto;
+    height: 605px;
+    width: 380px;
+    margin: 50px 0px 0 50px;
+    border-left: 1px solid silver;
+    border-right: 1px solid silver;
+    -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.listOfThings::-webkit-scrollbar {
+    display: none;
+  }
+
+.specificsOfThings{
+    height: 670px;
+    width: 800px;
+    margin: 20px 0px;
+    /* border: 2px solid red; */
+}
+
+.institutionCard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    height: 100px;
+    width: 340px;
+    margin: 20px auto;
+    border-radius: 20px;
+    box-shadow: 0px 2px 6px rgb(0, 0, 0, 0.3);
+    transition: all ease-in-out 0.3s;
+}
+
+.institutionCard:hover{
+    cursor: pointer;
+    transform: scale(1.07);
+}
+
+.institutionImage{
+    height: 70px;
+    width: 70px;
+    margin: auto;
+    border-radius: 50%;
+}
+
+.institutionShortInfo{
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.mainPic{
+    width: 800px;
+    height: 350px;
+}
+
+.schoolAddress{
+    background-image: url("../images/pin\ \(1\).png");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-left: 25px;
+}
+
+.schoolDescription{
+    width: 100%;
+    word-wrap: break-word;
+    overflow: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.schoolDescription::-webkit-scrollbar {
+    display: none;
+  }
+
+.selectedInstitution{
+    background-color: orange;
+}
