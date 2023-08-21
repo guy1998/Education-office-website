@@ -35,3 +35,9 @@ body{
     margin: auto;
     height: 800px;
 }
+
+@media (max-width: 1400px) {
+    .headingContainer{
+        width: 95%;
+    }
+}

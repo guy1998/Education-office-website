@@ -26,3 +26,9 @@
     flex-direction: column;
     margin: 00px 0 0 30px;
   }
+
+  @media (max-width: 1400px) {
+    #mainField{
+      width: 1200px;
+    }
+  }
