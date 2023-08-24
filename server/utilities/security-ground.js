@@ -1,13 +1,21 @@
 const otp = require('otp-generator');
 const bcrypt = require('bcrypt');
 
-const otpGenerator = ()=>{
+const otpGenerator = () => {
     return otp.generate(6);
 }
 
-const passwordHasher = async (password)=>{
-    const hashedPassword = await bcrypt.hash(myPlaintextPassword, saltRounds);
+const passwordHasher = (password) => {
+    const hashedPassword = bcrypt.hashSync(password, 10);
     return hashedPassword;
 }
 
-module.exports = otpGenerator;
+const passwordVerifier = (realPassword, testedPassword) => {
+    return bcrypt.compareSync(realPassword, testedPassword);
+}
+
+module.exports = {
+    otpGenerator: otpGenerator,
+    passwordHasher: passwordHasher,
+    passwordVerifier: passwordVerifier
+};

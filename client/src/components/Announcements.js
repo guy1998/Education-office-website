@@ -5,7 +5,7 @@ import LoadingScreen from "./LoadingScreen";
 
 const getAnnouncements = async () => {
 
-  const response = await fetch("http://localhost:5000/announcements", {
+  const response = await fetch("http://localhost:5000/announcements/retrieve", {
     method: "GET"
   })
 
