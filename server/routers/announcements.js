@@ -1,5 +1,5 @@
 const express = require('express');
-const { getDb } = require('../db');
+const { getDb } = require('../database/db.js');
 const app = express.Router();
 
 app.get("/retrieve", (req, res) => {

@@ -1,6 +1,5 @@
 import { React, useState } from "react";
 import NavBar from "./components/Navbar";
-import "./App.css";
 import Footer from "./components/Footer";
 import BottomLine from "./components/BottomLine";
 import WebsiteCenter from "./components/WebsiteCenter";

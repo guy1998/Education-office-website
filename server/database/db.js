@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 let dbConnection = null;
-const dbName = 'zvadb'; // Replace with your actual database name
+const dbName = 'zvadb'; 
 const url = "mongodb+srv://acifliku21:Juve1234@aldrincluster.aq3n8ol.mongodb.net/zvadb?retryWrites=true&w=majority";
 const connectionParams={
     useNewUrlParser: true,

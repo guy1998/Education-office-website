@@ -19,3 +19,5 @@ app.get('/login', (req, res)=>{
 app.get('/otp', (req, res)=>{
 
 });
+
+module.exports = app;

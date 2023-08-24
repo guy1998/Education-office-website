@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require("cors");
-const { connectToDb, getDb } = require('./db');
+const { connectToDb, getDb } = require('./database/db.js');
 const announcements = require('./routers/announcements.js');
 
 app.use(cors());
