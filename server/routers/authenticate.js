@@ -1,13 +1,22 @@
 const express = require('express');
-const { getDb } = require('../db');
+const { getDb } = require('../database/db');
 const logger = require('../utilities/log-in');
+const email = require('../utilities/email.js');
+const security = require('../utilities/security-ground.js');
 const app = express.Router();
+const cors = require('cors')
+const bodyparser = require('body-parser');
 
-app.get('/login', (req, res)=>{
+app.use(cors());
+app.use(bodyparser.json())
+
+app.post('/login', (req, res)=>{
     const db = getDb();
     logger.firstAuthentication(db, req.body).then((authValue)=>{
         if(authValue.status === 200){
-            res.status(200).json('Login was successful!');
+            const temp_id = security.temporary_id_generator(authValue.user._id.toString());
+            email.sendOtp(authValue.user.email, temp_id);
+            res.status(200).json({temp_id: temp_id});
         }else if(authValue.status === 401){
             res.status(401).json('Wrong password!');
         }else{
@@ -16,8 +25,16 @@ app.get('/login', (req, res)=>{
     })
 });
 
-app.get('/otp', (req, res)=>{
-
+app.post('/otp', (req, res)=>{
+    const result = logger.secondAuthentication(req.body.temp_id, req.body.otp);
+    if(result.result)
+        res.status(200).json("This will be the token");
+    else if(result.code === 2)
+        res.status(401).json("Wrong OTP");
+    else if(result.code === 3)
+        res.status(404).json("OTP has expired");
+    else 
+        res.status(500).json("Server malfunction");
 });
 
 module.exports = app;

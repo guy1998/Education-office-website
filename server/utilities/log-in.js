@@ -12,18 +12,18 @@ const credentialVerification = (enteredInfo, user) => {
 const firstAuthentication = async (db, enteredInfo) => {
     const user = await retrieveUser(db, enteredInfo.username);
     if (user) {
-        if (trial.credentialVerification(enteredInfo, user)) {
-            return { status: 200, message: "Success" };
+        if (credentialVerification(enteredInfo, user)) {
+            return { status: 200, user: user };
         } else {
-            return { status: 401, message: "Wrong password" };
+            return { status: 401 };
         }
     } else {
-        return { status: 404, message: "User does not exist!" };
+        return { status: 404 };
     }
 }
 
-const secondAuthentication = () => {
-
+const secondAuthentication = (userid, otp) => {
+    return security.otpVerifier(userid, otp);
 }
 
 

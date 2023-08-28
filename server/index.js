@@ -3,8 +3,19 @@ const app = express();
 const cors = require("cors");
 const { connectToDb, getDb } = require('./database/db.js');
 const announcements = require('./routers/announcements.js');
+const auth = require('./routers/authenticate.js');
 
-app.use(cors());
+const allowedOrigins = ['http://localhost:3456', 'http://localhost:3000'];
+
+app.use(cors({
+    origin: (origin, callback) => {
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            console.log('hello from the other side');
+        }
+    }
+}));
 
 connectToDb((err) => {
     if (err) {
@@ -17,4 +28,4 @@ connectToDb((err) => {
 })
 
 app.use("/announcements", announcements);
-
+app.use('/authenticate', auth);

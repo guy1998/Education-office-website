@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 require('dotenv').config();
-const otpGenerator = require('./security-ground.js');
+const security = require('./security-ground.js');
 
 const transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -10,9 +10,10 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-const sendOtp = (emailAdress) => {
+const sendOtp = (emailAdress, temp_id) => {
 
-    const otp = otpGenerator();
+    const otp = security.otpGenerator();
+    security.otpStoring(temp_id, otp);
 
     const mailOptions = {
         from: "no-reply",
