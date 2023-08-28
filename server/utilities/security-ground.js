@@ -7,8 +7,8 @@ const otpGenerator = () => {
     return otp.generate(6);
 }
 
-const otpStoring = (otp, userid) => {
-    if(cache.set(userid, otp, 300))
+const otpStoring = (temp_id, otp) => {
+    if(cache.set(temp_id, otp, 300))
         console.log('otp set for 5 minutes');
     else
         console.log('Could not store the otp');
