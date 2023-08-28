@@ -8,10 +8,15 @@ const verifyOtp = (temp_id, otp)=>{
         headers: {"Content-type": "application/json"},
         body: JSON.stringify({temp_id: temp_id, otp: otp})
     }).then(response=>{
-        if(response.status === 200)
+        if(response.status === 200){
             console.log("Here we go");
-        else
-            console.log("No sir we did not go!");
+        }else if (response.status === 404){
+            alert('Otp has expired');
+            window.location.reload();
+        }else if(response.status === 401){
+            const msg = document.getElementById('errorMessage');
+            msg.innerHTML = 'OTP is not correct!';
+        }
     })
 
 }
@@ -30,6 +35,7 @@ function OtpCheck(){
                 <p>Nje kod verifikimi ju eshte derguar ne emailin tuaj. Ju lutem vendoseni per te vazhduar!</p>
                 <input onChange={handleCodeChange} type="text" placeholder="xxxxxx" className="otpField" required maxLength={6} minLength={6}></input>
                 <button className="loginButton" onClick={()=>{verifyOtp(localStorage.getItem('temporary_id'), code)}}>Vazhdo</button>
+                <p id="errorMessage"></p>
             </div>
         </div>
     )

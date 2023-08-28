@@ -190,3 +190,7 @@
 .otpField:focus{
     outline: 2px solid purple;
 }
+
+#errorMessage{
+    color: red;
+}
