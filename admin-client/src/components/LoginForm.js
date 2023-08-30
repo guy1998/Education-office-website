@@ -1,33 +1,7 @@
 import "../styles/login.css";
 import React, { useState } from "react";
 import MyButton from "./MyButton";
-
-const login = async (username, password, otpchecker) => {
-
-    fetch('http://localhost:5000/authenticate/login', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            username: username,
-            password: password
-        })
-    }).then(response => {
-        if (response.status === 200)
-            return response.json();
-        else if (response.status === 404)
-            alert('User does not exist');
-        else
-            alert('Wrong password');
-    }).then(serverData=>{
-        if(serverData){
-            localStorage.setItem('temporary_id', serverData.temp_id);
-            otpchecker();
-        }
-    })
-
-}
+const functions = require('../scirpts/log-in-scripts.js');
 
 function LoginForm({otpchecker}) {
 
@@ -44,7 +18,7 @@ function LoginForm({otpchecker}) {
 
     const handleLogin = (event) => {
         event.preventDefault();
-        login(username, password, otpchecker);
+        functions.login(username, password, otpchecker);
     }
 
     return (

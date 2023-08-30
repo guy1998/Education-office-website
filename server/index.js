@@ -8,10 +8,10 @@ const auth = require('./routers/authenticate.js');
 
 const allowedOrigins = ['http://localhost:3456', 'http://localhost:3000'];
 
-app.use(express.static(path.join(__dirname, 'build')));
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+// app.use(express.static(path.join(__dirname, 'build')));
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
 app.use(cors({
     origin: (origin, callback) => {
@@ -20,7 +20,8 @@ app.use(cors({
         } else {
             console.log('hello from the other side');
         }
-    }
+    },
+    credentials: true
 }));
 
 connectToDb((err) => {

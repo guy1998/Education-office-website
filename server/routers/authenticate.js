@@ -1,5 +1,4 @@
 const express = require('express');
-const { getDb } = require('../database/db');
 const logger = require('../utilities/log-in');
 const email = require('../utilities/email.js');
 const security = require('../utilities/security-ground.js');
@@ -11,8 +10,7 @@ app.use(cors());
 app.use(bodyparser.json())
 
 app.post('/login', (req, res)=>{
-    const db = getDb();
-    logger.firstAuthentication(db, req.body).then((authValue)=>{
+    logger.firstAuthentication(req.body).then((authValue)=>{
         if(authValue.status === 200){
             const temp_id = security.temporary_id_generator(authValue.user._id.toString());
             email.sendOtp(authValue.user.email, temp_id);
@@ -27,8 +25,12 @@ app.post('/login', (req, res)=>{
 
 app.post('/otp', (req, res)=>{
     const result = logger.secondAuthentication(req.body.temp_id, req.body.otp);
-    if(result.result)
-        res.status(200).json("This will be the token");
+    if(result.result){
+        logger.tokenIssuing(req.body.temp_id)
+        .then(tokenObject=>{
+            res.status(200).json(tokenObject);
+        })
+    }
     else if(result.code === 2)
         res.status(401).json("Wrong OTP");
     else if(result.code === 3)
