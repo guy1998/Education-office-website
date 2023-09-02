@@ -40,7 +40,7 @@ const secondAuthentication = (userid, otp) => {
 
 const tokenIssuing = async (userid) => {
     const user = await getUserById(security.id_decrypter(userid));
-    const accessToken = jwt.sign(user, process.env.JWT_KEY, {expiresIn: '900'}) //15 minutes
+    const accessToken = jwt.sign(user, process.env.JWT_KEY, {expiresIn: 900}) //15 minutes
     const refreshToken = jwt.sign(user, process.env.JWT_KEY, {expiresIn: '1h'});
     return {accessToken: accessToken, refreshToken: refreshToken};
 }

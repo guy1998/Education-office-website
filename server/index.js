@@ -1,38 +1,44 @@
 const express = require('express');
 const app = express();
-const path = require('path');
+const https = require('https');
+const fs = require('fs');
 const cors = require("cors");
 const { connectToDb, getDb } = require('./database/db.js');
 const announcements = require('./routers/announcements.js');
 const auth = require('./routers/authenticate.js');
 
-const allowedOrigins = ['http://localhost:3456', 'http://localhost:3000'];
-
-// app.use(express.static(path.join(__dirname, 'build')));
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
+const allowedOrigins = ['https://localhost:3456', 'http://localhost:3000'];
 
 app.use(cors({
     origin: (origin, callback) => {
-        if (allowedOrigins.includes(origin)) {
+        if (allowedOrigins.includes(origin) || !origin) {
             callback(null, true);
         } else {
-            console.log('hello from the other side');
+            callback(new Error('Not allowed by CORS'));
         }
     },
-    credentials: true
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204,
 }));
+
+app.use("/announcements", announcements);
+app.use('/authenticate', auth);
+
+const options = {
+    key: fs.readFileSync('../localhost+2-key.pem'),
+    cert: fs.readFileSync('../localhost+2.pem'),
+};
+const port = 5443;
+const server = https.createServer(options, app);
 
 connectToDb((err) => {
     if (err) {
         console.log("Something went wrong with the server! Please try again later");
     } else {
-        app.listen(5000, () => {
-            console.log("Listening to port 5000");
+
+        server.listen(port, () => {
+            console.log(`Listening to HTTPS on port ${port}`);
         });
     }
 })
-
-app.use("/announcements", announcements);
-app.use('/authenticate', auth);
