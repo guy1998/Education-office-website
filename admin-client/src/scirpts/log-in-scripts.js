@@ -1,4 +1,3 @@
-const cookies = require('./cookie-handler.js');
 
 const verifyOtp = (temp_id, otp, navigator) => {
 
