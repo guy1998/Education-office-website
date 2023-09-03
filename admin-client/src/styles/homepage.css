@@ -1,0 +1,17 @@
+.mainContainer{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.contentContainer{
+    height: 100vh;
+    width: var(--content-width);
+}
+
+.tape{
+    height: var(--tape-height);
+    width: 100%;
+    background-image: linear-gradient(to right, orchid, purple);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+}
