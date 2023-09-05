@@ -1,100 +1,117 @@
-:root{
-    --side-menu-width: 20%;
-    --content-width: 80%;
-    --tape-height: 10%;
-    --options-height: 90%
+:root {
+  --side-menu-width: 20%;
+  --content-width: 80%;
+  --tape-height: 10%;
+  --options-height: 90%;
 }
 
-.myOffcanvas{
-    background-image: linear-gradient(180deg, orchid, purple);
-    height: 100vh;
-    width: var(--side-menu-width);
-    box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.4);
+.myOffcanvas {
+  background-image: linear-gradient(180deg, orchid, purple);
+  height: 100vh;
+  width: var(--side-menu-width);
+  box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.4);
 }
 
-.logoHolder{
-    color: white;
-    font-weight: bold;
-    letter-spacing: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: var(--tape-height);
-    background-image: url("../images/logo.png");
-    background-repeat: no-repeat;
-    background-size: 20px;
-    background-position: 3%;
-    padding-top: 7px;
+.logoHolder {
+  color: white;
+  font-weight: bold;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--tape-height);
+  background-image: url("../images/logo.png");
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: 3%;
+  padding-top: 7px;
 }
 
-.listHolder{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: var(--options-height);
-    color: white;
+.listHolder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--options-height);
+  color: white;
 }
 
-.listHolder ul{
-    list-style-type: none;
-    list-style: none;
-    padding: 0;
-    width: 100%;
+.listHolder ul {
+  list-style-type: none;
+  list-style: none;
+  padding: 0;
+  width: 100%;
 }
 
-.sideMenuOption{
-    width: 100%;
-    height: 50px;
-    padding-left: 20%;
-    display: flex;
-    align-items: center;
-    /* border-top: 1px solid white; */
-    background-repeat: no-repeat;
-    background-size: 20px;
-    background-position: 8%;
+.sideMenuOption {
+  width: 100%;
+  height: 50px;
+  padding-left: 20%;
+  display: flex;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: 8%;
+  position: relative;
 }
 
-.sideMenuOption:hover{
-    background-color: darkorchid;
-    cursor: pointer;
+.sideMenuOption:hover {
+  background-color: darkorchid;
+  cursor: pointer;
 }
 
-#kreu{
-    background-image: url("../images/house-chimney.png");
+#kreu {
+  background-image: url("../images/house-chimney.png");
 }
 
-#ankesa{
-    background-image: url("../images/report.png");
+#ankesa {
+  background-image: url("../images/report.png");
 }
 
-#njoftim{
-    background-image: url("../images/advertisement.png");
+#njoftim {
+  background-image: url("../images/advertisement.png");
 }
 
-#lajm{
-    background-image: url("../images/radio.png");
+#lajm {
+  background-image: url("../images/radio.png");
 }
 
-#institucion{
-    background-image: url("../images/bank.png");
+#institucion {
+  background-image: url("../images/bank.png");
 }
 
-#ligj{
-    background-image: url("../images/gavel.png");
+#ligj {
+  background-image: url("../images/gavel.png");
 }
 
-#exam{
-    background-image: url("../images/test.png");
+#exam {
+  background-image: url("../images/test.png");
 }
 
-#olimp{
-    background-image: url("../images/trophy-star.png");
+#olimp {
+  background-image: url("../images/trophy-star.png");
 }
 
-#staff{
-    background-image: url("../images/group.png");
+#staff {
+  background-image: url("../images/group.png");
 }
 
-#settings{
-    background-image: url("../images/setting.png");
+#settings {
+  background-image: url("../images/setting.png");
+}
+
+.selected {
+  background-color: darkorchid;
+}
+
+.selected::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  top: 0;
+  right: -25px;
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-left: 25px solid darkorchid;
+  position: absolute;
 }
