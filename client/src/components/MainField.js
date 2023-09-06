@@ -2,10 +2,13 @@ import "../styles/mainfield.css";
 import ImageCarousel from "./ImageCarousel";
 import SideMenu from "./SideMenu";
 import RequestButton from "./RequestButton";
+import MessageForm from "./MessageForm";
 
 function MainField() {
   return (
+    <>
     <div className="sectionContainer">
+    <MessageForm />
       <div className="headingContainer">
         <h1 className="sectionTitle">KREU</h1>
         <div className="headingLine"></div>
@@ -23,6 +26,7 @@ function MainField() {
         </div>
       </section>
     </div>
+    </>
   );
 }
 

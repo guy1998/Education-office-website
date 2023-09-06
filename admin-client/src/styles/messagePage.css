@@ -1,0 +1,33 @@
+.messageMain{
+    display: flex;
+    width: 100%;
+    height: 90%;
+}
+
+.readingBox{
+    height: 90%;
+    width: 60%;
+    margin: auto;
+}
+
+.messagePlaceHolder{
+    background-image: url("../images/8644493_3962578.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 500px;
+    margin: auto;
+    width: 60%;
+    height: 90%;
+}
+
+.messageList{
+    width: 30%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto 0;
+    border-left: 2px solid gainsboro;
+    overflow: auto;
+}
