@@ -1,59 +1,77 @@
-
 const verifyOtp = (temp_id, otp, navigator) => {
-
-    fetch('https://localhost:5443/authenticate/otp', {
-        method: "POST",
-        credentials: 'include',
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ temp_id: temp_id, otp: otp })
+  fetch("https://localhost:5443/authenticate/otp", {
+    method: "POST",
+    credentials: "include",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify({ temp_id: temp_id, otp: otp }),
+  })
+    .then(response => {
+      if (response.status === 200) {
+        return response.json();
+      } else if (response.status === 404) {
+        alert("Otp has expired");
+        window.location.reload();
+      } else if (response.status === 401) {
+        const msg = document.getElementById("errorMessage");
+        msg.innerHTML = "OTP is not correct!";
+      }
     })
-        .then(response => {
-            if (response.status === 200) {
-                return response.json();
-            } else if (response.status === 404) {
-                alert('Otp has expired');
-                window.location.reload();
-            } else if (response.status === 401) {
-                const msg = document.getElementById('errorMessage');
-                msg.innerHTML = 'OTP is not correct!';
-            }
-        })
-        .then(data => {
-            if (data) {
-                navigator('/home', { replace: true });
-            }
-        })
-
-}
+    .then(data => {
+      if (data) {
+        localStorage.setItem("logged", true);
+        navigator("/home", { replace: true });
+      } else {
+        alert(
+          "Could not log you in at this time for some reason. Contact the information!"
+        );
+      }
+    });
+};
 
 const login = (username, password, otpchecker) => {
-    fetch('https://localhost:5443/authenticate/login', {
-        method: "POST",
-        credentials: 'include',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            username: username,
-            password: password
-        })
-    }).then(response => {
-        if (response.status === 200)
-            return response.json();
-        else if (response.status === 404)
-            alert('User does not exist');
-        else
-            alert('Wrong password');
-    }).then(serverData => {
-        if (serverData) {
-            localStorage.setItem('temporary_id', serverData.temp_id);
-            otpchecker();
-        }
+  fetch("https://localhost:5443/authenticate/login", {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: username,
+      password: password,
+    }),
+  })
+    .then(response => {
+      if (response.status === 200) return response.json();
+      else if (response.status === 404) alert("User does not exist");
+      else alert("Wrong password");
     })
+    .then(serverData => {
+      if (serverData) {
+        localStorage.setItem("temporary_id", serverData.temp_id);
+        otpchecker();
+      }
+    });
+};
 
-}
+const logOut = (navigator) => {
+  fetch("https://localhost:5443/authenticate/logout", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  }).then(result => {
+    if (result.status === 200) {
+      localStorage.setItem("logged", false);
+      navigator("/", { replace: true });
+    } else {
+      alert("Could not log out! Please contact the information!");
+    }
+  });
+};
 
 module.exports = {
-    verifyOtp: verifyOtp,
-    login: login
+  verifyOtp: verifyOtp,
+  login: login,
+  logOut: logOut,
 };

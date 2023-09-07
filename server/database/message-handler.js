@@ -1,4 +1,5 @@
 const { getDb } = require("./db");
+const {ObjectId} = require('mongodb');
 
 const addMessage = async message => {
   const db = getDb();
@@ -15,7 +16,8 @@ const addMessage = async message => {
 const removeMessage = async id => {
   const db = getDb();
   try {
-    const result = await db.collection("messages").deleteOne({ _id: id });
+    console.log(id);
+    const result = await db.collection("messages").deleteOne({ _id: new ObjectId(id) });
     console.log("Deleted successfully!");
     return true;
   } catch (err) {

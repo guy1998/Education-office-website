@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import SideMenu from "./SideMenu";
 import "../styles/dashboard.css";
 import ContentContainer from "./ContentContainer";
+import { useNavigate } from "react-router";
 
 function DashBoardField() {
+  const navigator = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("logged") === "false")
+      navigator("/", { replace: true });
+  }, []);
+
   const [home, setHome] = useState(true);
   const [complaint, setComplaint] = useState(false);
   const [announcement, setAnnouncement] = useState(false);

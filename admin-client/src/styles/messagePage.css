@@ -1,33 +1,192 @@
-.messageMain{
-    display: flex;
-    width: 100%;
-    height: 90%;
+.messageMain {
+  display: flex;
+  width: 100%;
+  height: 90%;
 }
 
-.readingBox{
-    height: 90%;
-    width: 60%;
-    margin: auto;
+.readingBox {
+  height: 90%;
+  width: 60%;
+  margin: auto;
 }
 
-.messagePlaceHolder{
-    background-image: url("../images/8644493_3962578.jpeg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 500px;
-    margin: auto;
-    width: 60%;
-    height: 90%;
+.messagePlaceHolder {
+  background-image: url("../images/8644493_3962578.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 500px;
+  margin: auto;
+  width: 60%;
+  height: 90%;
 }
 
-.messageList{
-    width: 30%;
-    height: 85%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: auto 0;
-    border-left: 2px solid gainsboro;
-    overflow: auto;
+.messageList {
+  width: 30%;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto 0;
+  border-left: 2px solid gainsboro;
+  overflow: auto;
+  padding-top: 10px;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.messageList::-webkit-scrollbar {
+  display: none;
+}
+
+.messageCard {
+  width: 270px;
+  height: 100px;
+  border-radius: 25px;
+  box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  padding-top: 8px;
+  background-image: linear-gradient(
+    to right,
+    rgb(223, 252, 252),
+    rgb(187, 218, 228)
+  );
+  transition: all ease-in-out 0.3s;
+  margin-bottom: 15px;
+}
+
+.messageCard:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.bottomLineMessage {
+  display: flex;
+  width: 250px;
+  font-size: 10pt;
+  justify-content: space-between;
+}
+
+.headerBox {
+  margin-top: -7px;
+  height: 30px;
+  font-size: 10pt;
+  width: 90%;
+}
+
+.messageCard p {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.readingBox {
+  height: 90%;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.readingBox::-webkit-scrollbar {
+  display: none;
+}
+
+.readerMsgInfo {
+  display: flex;
+  align-items: center;
+  border-top: 2px solid gainsboro;
+  border-bottom: 2px solid gainsboro;
+  margin: 10px 0;
+}
+
+.readerMsgInfo::-webkit-scrollbar {
+  display: none;
+}
+
+.shortInfo {
+  margin: auto 25px;
+}
+
+.readerBody {
+  height: 380px;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  margin-bottom: 10px;
+}
+
+.pdfbutton {
+  position: relative;
+  font-size: 1.2em;
+  padding: 0.5em 1.4em;
+  background-color: skyblue;
+  text-decoration: none;
+  border: none;
+  border-radius: 0.5em;
+  color: white;
+  box-shadow: 0.5em 0.5em 0.5em rgba(0, 0, 0, 0.3);
+  min-width: 80%;
+  background-image: url("../images/pdf.png");
+  background-position: 40%;
+  background-repeat: no-repeat;
+  background-size: 25px;
+  height: 50px;
+  margin-bottom: 15px;
+  margin-right: 20px;
+}
+
+.pdfbutton::before {
+  position: absolute;
+  content: "";
+  height: 0;
+  width: 0;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    135deg,
+    white 0%,
+    white 50%,
+    rgba(150, 4, 31, 1) 50%,
+    rgba(191, 4, 38, 1) 60%
+  );
+  border-radius: 0 0 0.5em 0;
+  box-shadow: 0.2em 0.2em 0.2em rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+
+.pdfbutton:hover::before {
+  width: 1.6em;
+  height: 1.6em;
+}
+
+.pdfbutton:active {
+  box-shadow: 0.2em 0.2em 0.3em rgba(0, 0, 0, 0.3);
+  transform: translate(0.1em, 0.1em);
+}
+
+.readerButtonDiv {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deleteButton {
+  background-color: red;
+  background-image: url("../images/trash.png");
+  background-repeat: no-repeat;
+  background-size: 25px;
+  background-position: center;
+  width: 10%;
+  height: 50px;
+  border: none;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0.5em 0.5em 0.5em rgba(0, 0, 0, 0.3);
+}
+
+.deleteButton:active {
+  box-shadow: 0.2em 0.2em 0.3em rgba(0, 0, 0, 0.3);
+  transform: translate(0.1em, 0.1em);
 }

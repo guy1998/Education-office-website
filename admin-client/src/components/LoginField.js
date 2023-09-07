@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import "../styles/login.css";
 import LoginForm from "./LoginForm";
 import OtpCheck from "./OtpCheck";
 
 function LoginField() {
+  const navigator = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("logged") === "true")
+      navigator("/home", { replace: true });
+  }, []);
+
   const [otpCheck, setOtpCheck] = useState(false);
 
   const otpChecker = () => {
