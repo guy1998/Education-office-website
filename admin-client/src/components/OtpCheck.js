@@ -1,7 +1,7 @@
 import "../styles/login.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-const functions = require('../scirpts/log-in-scripts.js');
+import { verifyOtp } from "../scirpts/log-in-scripts";
 
 function OtpCheck(){
 
@@ -17,7 +17,7 @@ function OtpCheck(){
                 <h4>Kodi i verifikimit</h4>
                 <p>Nje kod verifikimi ju eshte derguar ne emailin tuaj. Ju lutem vendoseni per te vazhduar!</p>
                 <input onChange={handleCodeChange} type="text" placeholder="xxxxxx" className="otpField" required maxLength={6} minLength={6}></input>
-                <button className="loginButton" onClick={()=>{functions.verifyOtp(localStorage.getItem('temporary_id'), code, navigator)}}>Vazhdo</button>
+                <button className="loginButton" onClick={()=>{verifyOtp(localStorage.getItem('temporary_id'), code, navigator)}}>Vazhdo</button>
                 <p id="errorMessage"></p>
             </div>
         </div>

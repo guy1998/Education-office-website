@@ -1,4 +1,6 @@
-const verifyOtp = (temp_id, otp, navigator) => {
+import { startLoading, stopLoading } from "./loading-controller";
+
+export const verifyOtp = (temp_id, otp, navigator) => {
   fetch("https://localhost:5443/authenticate/otp", {
     method: "POST",
     credentials: "include",
@@ -28,7 +30,8 @@ const verifyOtp = (temp_id, otp, navigator) => {
     });
 };
 
-const login = (username, password, otpchecker, notification) => {
+export const login = (username, password, otpchecker, notification) => {
+  startLoading();
   fetch("https://localhost:5443/authenticate/login", {
     method: "POST",
     credentials: "include",
@@ -48,12 +51,13 @@ const login = (username, password, otpchecker, notification) => {
     .then(serverData => {
       if (serverData) {
         localStorage.setItem("temporary_id", serverData.temp_id);
+        stopLoading();
         otpchecker();
       }
     });
 };
 
-const logOut = () => {
+export const logOut = () => {
   fetch("https://localhost:5443/authenticate/logout", {
     method: "POST",
     headers: {
@@ -68,10 +72,4 @@ const logOut = () => {
       alert("Could not log out! Please contact the information!");
     }
   });
-};
-
-module.exports = {
-  verifyOtp: verifyOtp,
-  login: login,
-  logOut: logOut,
 };

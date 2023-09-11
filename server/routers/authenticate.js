@@ -32,7 +32,7 @@ app.post("/otp", (req, res) => {
         maxAge: 3600000,
         httpOnly: true,
         secure: true,
-        sameSite: "none",
+        sameSite: "none"
       });
 
       res.status(200).json({ msg: "token sent through cookie" });
@@ -43,14 +43,14 @@ app.post("/otp", (req, res) => {
 });
 
 app.post("/logout", (req, res) => {
-    console.log("Loging out!");
-    res.cookie("tokenCookie", "", {
-      expires: new Date(0),
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-    });
-    res.status(200).json("Successfully logged out!");
+  console.log("Loging out!");
+  res.cookie("tokenCookie", "", {
+    expires: new Date(0),
+    httpOnly: true,
+    secure: true,
+    sameSite: "none"
+  });
+  res.status(200).json("Successfully logged out!");
 });
 
 module.exports = app;
