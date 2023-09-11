@@ -1,12 +1,14 @@
 import "../styles/login.css";
 import React, { useState } from "react";
 import MyButton from "./MyButton";
+import {useSnackbar} from "notistack";
 const functions = require('../scirpts/log-in-scripts.js');
 
 function LoginForm({otpchecker}) {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const {enqueueSnackbar, closeSnackbar} = useSnackbar();
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
@@ -18,7 +20,7 @@ function LoginForm({otpchecker}) {
 
     const handleLogin = (event) => {
         event.preventDefault();
-        functions.login(username, password, otpchecker);
+        functions.login(username, password, otpchecker, {add: enqueueSnackbar, close: closeSnackbar});
     }
 
     return (

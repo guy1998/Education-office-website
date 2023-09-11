@@ -1,42 +1,43 @@
-const { getDb } = require('./db.js');
+const { getDb } = require("./db.js");
+const { ObjectId } = require("mongodb");
 
-const getAllAnnouncements = async ()=>{
-    const db = getDb();
-    const announcements = await db.collection('announcements').find().toArray();
-    return announcements;
-}
+const getAllAnnouncements = async () => {
+  const db = getDb();
+  const announcements = await db.collection("announcements").find().toArray();
+  return announcements;
+};
 
-const addAnnouncement = async (announcement)=>{
-    const db = getDb();
-    try{
-        const result = await db.collection('announcements').insertOne(announcement);
-        console.log('Announcement successfully inserted!');
-        return true;
-    }catch(err){
-        console.log('Could not insert announcement: ' + err);
-        return false;
-    }
-}
+const addAnnouncement = async announcement => {
+  const db = getDb();
+  try {
+    const result = await db.collection("announcements").insertOne(announcement);
+    console.log("Announcement successfully inserted!");
+    return true;
+  } catch (err) {
+    console.log("Could not insert announcement: " + err);
+    return false;
+  }
+};
 
-const deleteAnnouncement = async (id)=>{
-    const db = getDb();
-    try{
-        const result = await db.collection('announcements').deleteOne({_id: id});
-        console.log('Deleted successfully!');
-        return true;
-    }catch(err){
-        console.log('Could not delete the announcement');
-        return false;
-    }
-}
+const deleteAnnouncement = async id => {
+  const db = getDb();
+  try {
+    const result = await db
+      .collection("announcements")
+      .deleteOne({ _id: new ObjectId(id) });
+    console.log("Deleted successfully!");
+    return true;
+  } catch (err) {
+    console.log("Could not delete the announcement");
+    return false;
+  }
+};
 
-const editAnnouncement = async (announcement, newInfo) => {
-
-}
+const editAnnouncement = async (announcement, newInfo) => {};
 
 module.exports = {
-    getAllAnnouncements: getAllAnnouncements,
-    addAnnouncement: addAnnouncement,
-    deleteAnnouncement: deleteAnnouncement,
-    editAnnouncement: editAnnouncement
-}
+  getAllAnnouncements: getAllAnnouncements,
+  addAnnouncement: addAnnouncement,
+  deleteAnnouncement: deleteAnnouncement,
+  editAnnouncement: editAnnouncement
+};

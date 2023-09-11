@@ -6,7 +6,7 @@
 }
 
 .myOffcanvas {
-  background-image: linear-gradient(180deg, orchid, purple);
+  background-image: linear-gradient(180deg, orchid, #d8b73e);
   height: 100vh;
   width: var(--side-menu-width);
   box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.4);

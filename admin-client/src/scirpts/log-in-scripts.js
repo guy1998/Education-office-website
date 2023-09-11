@@ -28,7 +28,7 @@ const verifyOtp = (temp_id, otp, navigator) => {
     });
 };
 
-const login = (username, password, otpchecker) => {
+const login = (username, password, otpchecker, notification) => {
   fetch("https://localhost:5443/authenticate/login", {
     method: "POST",
     credentials: "include",
@@ -42,8 +42,8 @@ const login = (username, password, otpchecker) => {
   })
     .then(response => {
       if (response.status === 200) return response.json();
-      else if (response.status === 404) alert("User does not exist");
-      else alert("Wrong password");
+      else if (response.status === 404) notification.add('User does not exist', {variant: 'error'});
+      else notification.add('Wrong password', {variant: 'error'});
     })
     .then(serverData => {
       if (serverData) {
@@ -53,7 +53,7 @@ const login = (username, password, otpchecker) => {
     });
 };
 
-const logOut = (navigator) => {
+const logOut = () => {
   fetch("https://localhost:5443/authenticate/logout", {
     method: "POST",
     headers: {
@@ -63,7 +63,7 @@ const logOut = (navigator) => {
   }).then(result => {
     if (result.status === 200) {
       localStorage.setItem("logged", false);
-      navigator("/", { replace: true });
+      window.location.reload();
     } else {
       alert("Could not log out! Please contact the information!");
     }
