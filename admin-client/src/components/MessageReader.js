@@ -3,6 +3,7 @@ import "../styles/messagePage.css";
 import { generatePDF, deleteMessage } from "../scirpts/messages-scripts";
 
 function MessageReader({ message, onDelete }) {
+
   return message
     ? <div className="readingBox">
         <div className="readerHeader">

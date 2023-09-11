@@ -40,7 +40,7 @@
 }
 
 .announcementCard {
-  background-image: linear-gradient(to left, lightsalmon, #FFDB58);
+  background-image: linear-gradient(to left, lightsalmon, #ffdb58);
   height: 80px;
   width: 90%;
   margin-top: 10px;
@@ -54,6 +54,12 @@
 .announcementCard:hover {
   cursor: pointer;
   transform: scale(1.05);
+}
+
+.announcementCard p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .addingButton {
@@ -135,7 +141,7 @@
   border: 1px solid rgba(128, 0, 128, 0.3) !important;
 }
 
-.confirmButton{
+.confirmButton {
   background-color: green;
   border: none;
   width: 80%;
@@ -150,12 +156,12 @@
   font-weight: bold;
 }
 
-.confirmButton:hover{
+.confirmButton:hover {
   background-color: rgb(7, 233, 7);
   cursor: pointer;
 }
 
-.confirmButton:disabled{
+.confirmButton:disabled {
   background-color: transparent;
   background-image: none;
   width: 0;

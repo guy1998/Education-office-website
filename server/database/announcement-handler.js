@@ -33,7 +33,26 @@ const deleteAnnouncement = async id => {
   }
 };
 
-const editAnnouncement = async (announcement, newInfo) => {};
+const editAnnouncement = async (id, newInfo) => {
+  try {
+    const db = getDb();
+    const result = await db.collection("announcements").updateOne(
+      { _id: new ObjectId(id) },
+      {
+        $set: {
+          title: newInfo.title,
+          description: newInfo.description,
+          link: newInfo.link
+        },
+        $currentDate: { lastModified: true }
+      }
+    );
+    return true;
+  } catch (err) {
+    console.log("Could not edit!");
+    return false;
+  }
+};
 
 module.exports = {
   getAllAnnouncements: getAllAnnouncements,

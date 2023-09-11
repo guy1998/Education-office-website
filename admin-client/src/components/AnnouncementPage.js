@@ -13,6 +13,7 @@ function AnnouncementPage() {
   const [adding, setAdding] = useState(false);
   const [added, setAdded] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [edited, setEdited] = useState(false);
 
   const openForm = () => {
     setAdding(true);
@@ -30,6 +31,16 @@ function AnnouncementPage() {
     setSelectedAnnouncement(announcement);
   }
 
+  const onDelete = ()=>{
+    setDeleted(true);
+    setSelectedAnnouncement(null);
+  }
+
+  const onEdit = (newInfo)=>{
+    setSelectedAnnouncement(newInfo);
+    setEdited(true);
+  }
+
   useEffect(
     () => {
       setLoading(true);
@@ -39,15 +50,16 @@ function AnnouncementPage() {
       });
       setDeleted(false);
       setAdded(false);
+      setEdited(false);
     },
-    [deleted || added]
+    [deleted, added, edited]
   );
 
   return loading
     ? <Loading />
     : <div className="announcementMain">
         {adding && <AddAnnouncementForm onClose={closeForm} onAdd={onAdd} />}
-        {!adding && <AnnouncementReader announcement={selectedAnnouncement} />}
+        {!adding && <AnnouncementReader announcement={selectedAnnouncement} onDelete={onDelete} onEdit={onEdit}/>}
         <AnnouncementList announcements={announcements} openForm={openForm} select={onSelect}/>
       </div>;
 }

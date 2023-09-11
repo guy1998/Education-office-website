@@ -32,12 +32,12 @@ app.get('/admin/retrieve', (req, res) => {
 
 app.put('/admin/edit', (req, res) => {
     authorize(req, res, () => {
-        handler.editAnnouncement(req.body.current, req.body.new)
+        handler.editAnnouncement(req.body._id, req.body.newInfo)
             .then(result => {
                 if (result)
-                    res.status(200).json("Added successfully!");
+                    res.status(200).json("Edited successfully!");
                 else
-                    res.status(304).json('Could not add!');
+                    res.status(304).json('Could not edit!');
             })
             .catch(err => {
                 res.status(500).json("Something went wrong with the server!");
