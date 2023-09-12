@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 function InstitutionsPage (){
+
     return(
         <>
             <div style={{display: 'flex', alignItems: "center", justifyContent: "center"}}>

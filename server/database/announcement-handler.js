@@ -40,9 +40,7 @@ const editAnnouncement = async (id, newInfo) => {
       { _id: new ObjectId(id) },
       {
         $set: {
-          title: newInfo.title,
-          description: newInfo.description,
-          link: newInfo.link
+          ...newInfo
         },
         $currentDate: { lastModified: true }
       }
