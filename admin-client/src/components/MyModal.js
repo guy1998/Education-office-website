@@ -11,15 +11,12 @@ function MyModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
+          {props.heading}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {props.children}
       </Modal.Body>
-      <Modal.Footer>
-        <button>Close</button>
-      </Modal.Footer>
     </Modal>
   );
 }

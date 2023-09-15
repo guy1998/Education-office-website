@@ -1,0 +1,217 @@
+.institutionMain {
+  width: 100%;
+  height: 90%;
+  margin-top: 0;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.institutionCard {
+  background-image: linear-gradient(135deg, skyblue, gainsboro, lightblue);
+  border-radius: 25px !important;
+  width: 300px;
+  height: 325px !important;
+  margin: 25px 45px;
+  border: none !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 32px rgba(0, 0, 0, 0.2);
+  --animation-sth: none;
+}
+
+.nameContainer {
+  overflow: hidden;
+}
+
+.scrollable:hover {
+  --animation-sth: scroll-left;
+}
+
+.cardImage {
+  height: 200px;
+  width: 270px !important;
+  margin: 15px auto 5px;
+  border-radius: 25px !important;
+}
+
+.cardName {
+  animation: var(--animation-sth) 7s linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-160%);
+  }
+}
+
+.viewCard {
+  background-color: blue;
+  border: none;
+  width: 210px;
+  height: 40px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.viewCard:hover {
+  cursor: pointer;
+  background-color: darkblue;
+}
+
+.deleteCard {
+  height: 40px;
+  width: 40px;
+  border: none;
+  background-color: red;
+  border-radius: 10px;
+  background-image: url("../images/trash.png");
+  background-repeat: no-repeat;
+  background-size: 17px;
+  background-position: center;
+}
+
+.deleteCard:hover {
+  cursor: pointer;
+  background-color: darkred;
+}
+
+.cardButtonDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filterDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 10%;
+  margin-top: 15px;
+}
+
+.searchBox {
+  width: 550px;
+  height: 40px;
+  border-radius: 25px;
+  border: 2px solid pink;
+  padding-left: 45px;
+  background-image: url("../images/search.png");
+  background-repeat: no-repeat;
+  background-position: 2%;
+  background-size: 20px;
+}
+
+.searchBox:focus {
+  outline: none;
+}
+
+.filterSelector {
+  width: 210px;
+  height: 35px;
+  border-radius: 20px;
+  border: 2px solid pink;
+  padding-left: 10px;
+  background-color: transparent;
+}
+
+.filterSelector:hover {
+  cursor: pointer;
+}
+
+.noResult {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/no-results.png");
+  background-repeat: no-repeat;
+  background-size: 300px;
+  background-position: 45%;
+  padding-top: 45px;
+  font-size: 20pt;
+  font-weight: bold;
+  color: purple;
+}
+
+.addInstitutionButton {
+  position: absolute;
+  top: 83%;
+  left: 88%;
+  width: 70px;
+  height: 70px;
+  border: none;
+  background-color: purple;
+  border-radius: 50%;
+  background-image: url("../images/add.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 25px;
+  z-index: 2;
+}
+
+.addInstitutionButton:hover {
+  cursor: pointer;
+  background-color: darkorchid;
+}
+
+.institutionFormDiv {
+  padding-top: 10px;
+  height: 400px;
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selector {
+  width: 90% !important;
+  margin-bottom: 15px;
+  font-size: 12pt !important;
+}
+
+.selector:focus {
+  box-shadow: 0 0 0 0.25rem rgba(128, 0, 128, 0.3) !important;
+  border: 1px solid rgba(128, 0, 128, 0.3) !important;
+}
+
+.institutionForm {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#logoImg, #mainImg{
+  display: none;
+}
+
+.fileLabel{
+  width: 90%;
+  border: 0.5px solid gainsboro;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.institutionForm label div{
+  width: 50px;
+  height: 50px;
+  background-color: rgba(128, 0, 128, 0.3);
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  background-image: url('../images/picture.png');
+  background-size: 25px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.labelWriting{
+  margin: auto 15px;
+}
