@@ -11,7 +11,7 @@
   border-radius: 25px !important;
   width: 300px;
   height: 325px !important;
-  margin: 25px 45px;
+  margin: 25px 0 25px 45px;
   border: none !important;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 32px rgba(0, 0, 0, 0.2);
   --animation-sth: none;
@@ -214,4 +214,11 @@
 
 .labelWriting{
   margin: auto 15px;
+}
+
+.institutionContainer{
+  overflow-y: scroll;
+  flex-wrap: wrap;
+  display: flex;
+  height: 103%;
 }

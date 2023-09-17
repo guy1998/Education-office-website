@@ -12,14 +12,14 @@ function AddInstitutionForm({ onAdd }) {
     area: "",
     address: "",
     director: "",
-    description: "",
-    logoPath: "",
-    imgPath: ""
+    description: ""
   });
+  const [photo, setPhoto] = useState(null);
 
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const clearForm = ()=>{
+    setPhoto(null);
     const formItems = document.querySelectorAll('input');
     formItems.forEach(item=>{
         item.value = '';
@@ -50,19 +50,10 @@ function AddInstitutionForm({ onAdd }) {
         <label htmlFor="logoImg" className="fileLabel">
           <div />
           <p className="labelWriting">
-            {newInstitution.logoPath ? newInstitution.logoPath : "Logoja"}
+            {photo ? photo.name : "Imazhi"}
           </p>
         </label>
-        <input type="file" id="logoImg" />
-        <label htmlFor="mainImg" className="fileLabel">
-          <div />
-          <p className="labelWriting">
-            {newInstitution.imgPath
-              ? newInstitution.imgPath
-              : "Imazhi i institucionit"}
-          </p>
-        </label>
-        <input type="file" id="mainImg" />
+        <input type="file" id="logoImg" onChange={(event)=>setPhoto(event.target.files[0])}/>
         <Form.Select
           size="lg"
           className="selector"
@@ -132,11 +123,12 @@ function AddInstitutionForm({ onAdd }) {
             !newInstitution.area ||
             !newInstitution.address ||
             !newInstitution.director ||
-            !newInstitution.description
+            !newInstitution.description ||
+            !photo
           }
           onClick={(event) => {
             event.preventDefault();
-            addInstitution(newInstitution, {
+            addInstitution(newInstitution, photo, {
               add: enqueueSnackbar,
               close: closeSnackbar
             });
@@ -147,9 +139,7 @@ function AddInstitutionForm({ onAdd }) {
                 area: "",
                 address: "",
                 director: "",
-                description: "",
-                logoPath: "",
-                imgPath: ""
+                description: ""
               });
             clearForm();
           }}

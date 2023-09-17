@@ -4,7 +4,7 @@ import InstitutionCard from "./InstitutionCard";
 
 function InstitutionContainer({ institutions }) {
   return institutions.length
-    ? <div>
+    ? <div className="institutionContainer">
         {institutions.map(institution => {
           return <InstitutionCard institution={institution} />;
         })}

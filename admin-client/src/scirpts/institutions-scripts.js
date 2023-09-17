@@ -49,14 +49,14 @@ const validateInstitution = (institution, notification) => {
   return true;
 };
 
-export const addInstitution = (institution, notification) => {
+export const addInstitution = (institution, photo, notification) => {
   if (validateInstitution(institution, notification)) {
+    let combinedData = new FormData();
+    combinedData.append("institution", JSON.stringify(institution));
+    combinedData.append('photo', photo);
     fetch("https://localhost:5443/institutions/admin/add", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(institution),
+      body: combinedData,
       credentials: "include"
     })
       .then(response => {
