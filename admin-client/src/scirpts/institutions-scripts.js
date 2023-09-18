@@ -132,35 +132,40 @@ export const deleteInstitution = (institution, notification) => {
 };
 
 export const editInstitution = (institution, newInfo, notification) => {
-  fetch("https://localhost:5443/institutions/admin/edit", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ _id: institution._id, newInfo: newInfo }),
-    credentials: "include"
-  })
-    .then(response => {
-      if (response.status === 200) {
-        notification.add("Institucioni u ndryshua me sukses!", {
-          variant: "success"
-        });
-        setTimeout(() => {
-          notification.close();
-        }, 5000);
-      } else if (response.status === 401) {
-        alert("Your session has expired");
-        logOut();
-      } else {
-        notification.add("Uups, dicka shkoi keq!", { variant: "error" });
-        setTimeout(() => {
-          notification.close();
-        }, 5000);
-      }
+  if (validateInstitution(newInfo, notification)) {
+    startLoading();
+    fetch("https://localhost:5443/institutions/admin/edit", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ _id: institution._id, newInfo: newInfo }),
+      credentials: "include"
     })
-    .catch(err => {
-      console.log(err);
-    });
+      .then(response => {
+        stopLoading();
+        if (response.status === 200) {
+          notification.add("Institucioni u ndryshua me sukses!", {
+            variant: "success"
+          });
+          setTimeout(() => {
+            notification.close();
+          }, 5000);
+        } else if (response.status === 401) {
+          alert("Your session has expired");
+          logOut();
+        } else {
+          notification.add("Uups, dicka shkoi keq!", { variant: "error" });
+          setTimeout(() => {
+            notification.close();
+          }, 5000);
+        }
+      })
+      .catch(err => {
+        stopLoading();
+        console.log(err);
+      });
+  }
 };
 
 export const changePhoto = (institution, photo, notification) => {

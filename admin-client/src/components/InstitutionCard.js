@@ -5,6 +5,7 @@ import MyModal from "./MyModal";
 import { deleteInstitution, changePhoto } from "../scirpts/institutions-scripts.js";
 import { useSnackbar } from "notistack";
 import ConfirmationModal from "./ConfirmationModal.js";
+import EditInstitutionForm from "./EditInstitutionForm";
 
 function InstitutionCard({ institution, onDelete, onEdit }) {
   const [viewSchool, setViewSchool] = useState(false);
@@ -57,8 +58,8 @@ function InstitutionCard({ institution, onDelete, onEdit }) {
           />
         </div>
       </Card.Body>
-      <MyModal show={viewSchool} onHide={() => setViewSchool(false)}>
-        <div>Ktu do jete shkolla</div>
+      <MyModal show={viewSchool} onHide={() => setViewSchool(false)} heading={"Perditeso institucionin"}>
+        <EditInstitutionForm institution={institution} onEdit={onEdit}/>
       </MyModal>
       <ConfirmationModal
         show={confirmDelete}
