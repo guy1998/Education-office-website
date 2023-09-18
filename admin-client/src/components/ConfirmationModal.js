@@ -18,7 +18,10 @@ function ConfirmationModal(props) {
         {props.messageconfirmation}
       </Modal.Body>
       <Modal.Footer>
-        <button onClick={props.onAccept}>Ne rregull</button>
+        <button onClick={()=>{
+          props.onAccept();
+          props.onHide();
+        }}>Ne rregull</button>
         <button onClick={props.onHide}>Anullo</button>
       </Modal.Footer>
     </Modal>

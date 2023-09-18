@@ -2,11 +2,11 @@ import React from "react";
 import "../styles/institutionPage.css";
 import InstitutionCard from "./InstitutionCard";
 
-function InstitutionContainer({ institutions }) {
+function InstitutionContainer({ institutions, onDelete, onEdit }) {
   return institutions.length
     ? <div className="institutionContainer">
         {institutions.map(institution => {
-          return <InstitutionCard institution={institution} />;
+          return <InstitutionCard institution={institution} onDelete={onDelete} onEdit={onEdit}/>;
         })}
       </div>
     : <div className="noResult">

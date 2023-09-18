@@ -8,23 +8,48 @@ import AddInstitutionForm from "./AddInstitutionForm";
 
 function InstitutionsPage() {
   const [institutions, setInstitutions] = useState([]);
+  const [instiutionsCopy, setInstitutionsCopy] = useState([]);
   const [added, setAdded] = useState(false);
+  const [deleted, setDeleted] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
+  const [edited, setEdited] = useState(false);
 
-  useEffect(() => {
-    retrieveInsitutions(data => setInstitutions(data));
-    setAdded(false);
-  }, [added]);
+  useEffect(
+    () => {
+      retrieveInsitutions(data => {
+        setInstitutions(data);
+        setInstitutionsCopy(data);
+      });
+      setAdded(false);
+      setDeleted(false);
+      setEdited(false);
+    },
+    [added, deleted, edited]
+  );
 
   return (
     <div className="institutionMain">
-      <InstitutionFilter />
-      <div style={{height: '85%', display:'flex', textAlign: 'center'}}>
-        <InstitutionContainer institutions={institutions}/>
+      <InstitutionFilter
+        institutions={instiutionsCopy}
+        setInstitutions={setInstitutions}
+      />
+      <div style={{ height: "85%", display: "flex", textAlign: "center" }}>
+        <InstitutionContainer
+          institutions={institutions}
+          onDelete={() => setDeleted(true)}
+          onEdit = {()=>setEdited(true)}
+        />
       </div>
-      <button className="addInstitutionButton" onClick={()=>setShowAdd(true)}></button>
-      <MyModal heading={'Shto nje institucion'} show={showAdd} onHide={()=>setShowAdd(false)}>
-        <AddInstitutionForm onAdd={()=>setAdded(true)}/>
+      <button
+        className="addInstitutionButton"
+        onClick={() => setShowAdd(true)}
+      />
+      <MyModal
+        heading={"Shto nje institucion"}
+        show={showAdd}
+        onHide={() => setShowAdd(false)}
+      >
+        <AddInstitutionForm onAdd={() => setAdded(true)} />
       </MyModal>
     </div>
   );

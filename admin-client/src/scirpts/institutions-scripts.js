@@ -1,6 +1,16 @@
 import { logOut } from "./log-in-scripts";
+import { startLoading, stopLoading } from "./loading-controller";
 
-export const filterInstitutions = filters => {};
+export const filterInstitutions = (filters, institutions) => {
+  const newInstitutions = institutions.filter(institution => {
+    return (
+      institution.name.toLowerCase().includes(filters.name.toLowerCase()) &&
+      institution.area.includes(filters.area) &&
+      institution.type.includes(filters.type)
+    );
+  });
+  return newInstitutions;
+};
 
 export const retrieveInsitutions = proceeding => {
   fetch("https://localhost:5443/institutions/admin/retrieve", {
@@ -51,15 +61,17 @@ const validateInstitution = (institution, notification) => {
 
 export const addInstitution = (institution, photo, notification) => {
   if (validateInstitution(institution, notification)) {
+    startLoading();
     let combinedData = new FormData();
     combinedData.append("institution", JSON.stringify(institution));
-    combinedData.append('photo', photo);
+    combinedData.append("photo", photo);
     fetch("https://localhost:5443/institutions/admin/add", {
       method: "POST",
       body: combinedData,
       credentials: "include"
     })
       .then(response => {
+        stopLoading();
         if (response.status === 200) {
           notification.add("Institucioni u shtua me sukses", {
             variant: "success"
@@ -78,12 +90,14 @@ export const addInstitution = (institution, photo, notification) => {
         }
       })
       .catch(err => {
+        stopLoading();
         console.log(err);
       });
   }
 };
 
 export const deleteInstitution = (institution, notification) => {
+  startLoading();
   fetch("https://localhost:5443/institutions/admin/delete", {
     method: "DELETE",
     headers: {
@@ -93,6 +107,7 @@ export const deleteInstitution = (institution, notification) => {
     credentials: "include"
   })
     .then(response => {
+      stopLoading();
       if (response.status === 200) {
         notification.add("Institucioni u fshi me sukses!", {
           variant: "success"
@@ -111,6 +126,7 @@ export const deleteInstitution = (institution, notification) => {
       }
     })
     .catch(err => {
+      stopLoading();
       console.log(err);
     });
 };
@@ -143,6 +159,41 @@ export const editInstitution = (institution, newInfo, notification) => {
       }
     })
     .catch(err => {
+      console.log(err);
+    });
+};
+
+export const changePhoto = (institution, photo, notification) => {
+  startLoading();
+  let combinedData = new FormData();
+  combinedData.append("institution", JSON.stringify(institution));
+  combinedData.append("photo", photo);
+  fetch("https://localhost:5443/institutions/admin/changePhoto", {
+    method: "PUT",
+    body: combinedData,
+    credentials: "include"
+  })
+    .then(response => {
+      stopLoading();
+      if (response.status === 200) {
+        notification.add("Imazhi u ndryshua me sukses", {
+          variant: "success"
+        });
+        setTimeout(() => {
+          notification.close();
+        }, 5000);
+      } else if (response.status === 401) {
+        alert("Your session has expired!");
+        logOut();
+      } else {
+        notification.add("Uups, dicka shkoi keq!", { variant: "error" });
+        setTimeout(() => {
+          notification.close();
+        }, 5000);
+      }
+    })
+    .catch(err => {
+      stopLoading();
       console.log(err);
     });
 };

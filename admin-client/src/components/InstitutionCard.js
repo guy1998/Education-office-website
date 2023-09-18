@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import "../styles/institutionPage.css";
 import MyModal from "./MyModal";
-import { deleteInstitution } from "../scirpts/institutions-scripts.js";
+import { deleteInstitution, changePhoto } from "../scirpts/institutions-scripts.js";
 import { useSnackbar } from "notistack";
 import ConfirmationModal from "./ConfirmationModal.js";
 
-function InstitutionCard({ institution }) {
+function InstitutionCard({ institution, onDelete, onEdit }) {
   const [viewSchool, setViewSchool] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
@@ -19,12 +19,26 @@ function InstitutionCard({ institution }) {
           : "institutionCard"
       }
     >
-      <Card.Img
-        className="cardImage"
-        variant="top"
-        src={"https://drive.google.com/uc?export=view&id=" + institution.photo}
-        alt="Institution image"
-      />
+      <div className="imgDiv">
+        <Card.Img
+          className="cardImage"
+          variant="top"
+          src={
+            "https://drive.google.com/uc?export=view&id=" + institution.photo
+          }
+          alt="Institution image"
+        />
+        <label id='photoLabel' htmlFor={institution._id}></label>
+        <input type='file' id={institution._id} className="photoChanger" onChange={(event)=>{
+          changePhoto(institution, event.target.files[0], {
+            add: (message, variant) => {
+              enqueueSnackbar(message, variant);
+              onEdit();
+            },
+            close: closeSnackbar
+          })
+        }}></input>
+      </div>
       <Card.Body>
         <div className="nameContainer">
           <Card.Title className="cardName">
@@ -49,10 +63,15 @@ function InstitutionCard({ institution }) {
       <ConfirmationModal
         show={confirmDelete}
         onHide={() => setConfirmDelete(false)}
-        messageconfirmation={"A jeni te sigurte se doni ta fshini kete institucion?"}
+        messageconfirmation={
+          "A jeni te sigurte se doni ta fshini kete institucion?"
+        }
         onAccept={() => {
           deleteInstitution(institution, {
-            add: enqueueSnackbar,
+            add: (message, variant) => {
+              enqueueSnackbar(message, variant);
+              onDelete();
+            },
             close: closeSnackbar
           });
         }}

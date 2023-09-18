@@ -18,19 +18,19 @@ function AddInstitutionForm({ onAdd }) {
 
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-  const clearForm = ()=>{
+  const clearForm = () => {
     setPhoto(null);
-    const formItems = document.querySelectorAll('input');
-    formItems.forEach(item=>{
-        item.value = '';
-    })
-    const selects = document.querySelectorAll('select');
-    selects.forEach(item=>{
-        item.selectedIndex = 0;
-    })
-    const textarea = document.querySelector('textarea');
-    textarea.value = '';
-  }
+    const formItems = document.querySelectorAll("input");
+    formItems.forEach(item => {
+      item.value = "";
+    });
+    const selects = document.querySelectorAll("select");
+    selects.forEach(item => {
+      item.selectedIndex = 0;
+    });
+    const textarea = document.querySelector("textarea");
+    textarea.value = "";
+  };
 
   return (
     <div className="institutionFormDiv">
@@ -53,14 +53,18 @@ function AddInstitutionForm({ onAdd }) {
             {photo ? photo.name : "Imazhi"}
           </p>
         </label>
-        <input type="file" id="logoImg" onChange={(event)=>setPhoto(event.target.files[0])}/>
+        <input
+          type="file"
+          id="logoImg"
+          onChange={event => setPhoto(event.target.files[0])}
+        />
         <Form.Select
           size="lg"
           className="selector"
           onChange={event =>
             onChange(event, "type", newInstitution, setNewInstitution)}
         >
-          <option value={'default'}>Tipi i institucionit</option>
+          <option value={"default"}>Tipi i institucionit</option>
           <option>9-vjecare</option>
           <option>Gjimnaz</option>
           <option>Shkolle profesionale</option>
@@ -72,7 +76,7 @@ function AddInstitutionForm({ onAdd }) {
           onChange={event =>
             onChange(event, "area", newInstitution, setNewInstitution)}
         >
-          <option value={'default'}>Lagjia</option>
+          <option value={"default"}>Lagjia</option>
           <option>30 vjetori</option>
           <option>Clirim</option>
           <option>Deshmoret e kombit</option>
@@ -126,21 +130,23 @@ function AddInstitutionForm({ onAdd }) {
             !newInstitution.description ||
             !photo
           }
-          onClick={(event) => {
+          onClick={event => {
             event.preventDefault();
             addInstitution(newInstitution, photo, {
-              add: enqueueSnackbar,
+              add: (message, variant) => {
+                enqueueSnackbar(message, variant);
+                onAdd();
+              },
               close: closeSnackbar
             });
-            onAdd();
             setNewInstitution({
-                name: "",
-                type: "",
-                area: "",
-                address: "",
-                director: "",
-                description: ""
-              });
+              name: "",
+              type: "",
+              area: "",
+              address: "",
+              director: "",
+              description: ""
+            });
             clearForm();
           }}
         >

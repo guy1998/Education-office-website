@@ -28,9 +28,11 @@ const deleteInstitution = async id => {
 };
 
 const editInstitution = async (id, newInfo) => {
+  delete newInfo._id;
+  delete newInfo.lastModified;
   try {
     const db = getDb();
-    const result = await db.collection("institution").updateOne(
+    const result = await db.collection("institutions").updateOne(
       { _id: new ObjectId(id) },
       {
         $set: {
@@ -42,6 +44,7 @@ const editInstitution = async (id, newInfo) => {
     return true;
   } catch (err) {
     console.log("Could not edit!");
+    console.log(err);
     return false;
   }
 };

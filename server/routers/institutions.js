@@ -7,6 +7,7 @@ const authorize = require("../utilities/token.js");
 const photoUpload = require("../utilities/google-drive-api.js");
 const multer = require("multer");
 const { uploadFile, deleteFile } = require("../utilities/google-drive-api.js");
+const { deleteModel } = require("mongoose");
 
 var upload = multer({
   storage: multer.memoryStorage(),
@@ -63,18 +64,16 @@ app.get("/admin/retrieve", (req, res) => {
 
 app.delete("/admin/delete", (req, res) => {
   authorize(req, res, () => {
-    deleteFile(req.body.photo).then((data) => {
+    deleteFile(req.body.photo).then(data => {
       handler
-      .deleteInstitution(req.body._id)
-      .then(result => {
-        if (result) 
-          res.status(200).json("Deleted successfully!");
-        else 
-          res.status(304).json("Something went wrong!");
-      })
-      .catch(err => {
-        res.status(500).json("Server crashed!");
-      });
+        .deleteInstitution(req.body._id)
+        .then(result => {
+          if (result) res.status(200).json("Deleted successfully!");
+          else res.status(304).json("Something went wrong!");
+        })
+        .catch(err => {
+          res.status(500).json("Server crashed!");
+        });
     });
   });
 });
@@ -114,6 +113,32 @@ app.put("/admin/edit", (req, res) => {
       .catch(err => {
         res.status(500).json("Server crashed!");
       });
+  });
+});
+
+app.put("/admin/changePhoto", (req, res) => {
+  authorize(req, res, () => {
+    const photo = req.files.find(file => file.fieldname === "photo");
+    uploadFile(photo).then(data => {
+      if (data.response) {
+        let newInfo = JSON.parse(req.body.institution);
+        const deleted = newInfo.photo;
+        newInfo.photo = data.id;
+        deleteFile(deleted).then(result => {
+          handler
+            .editInstitution(newInfo._id, newInfo)
+            .then(result => {
+              if (result) res.status(200).json("Edited successfully");
+              else res.status(304).json("Could not edit!");
+            })
+            .catch(err => {
+              res.status(500).json("Server crashed!");
+            });
+        });
+      } else {
+        res.status(500).json("Server crashed!");
+      }
+    });
   });
 });
 

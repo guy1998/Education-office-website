@@ -26,10 +26,46 @@
 }
 
 .cardImage {
-  height: 200px;
+  height: 200px !important;
   width: 270px !important;
   margin: 15px auto 5px;
   border-radius: 25px !important;
+  color: transparent;
+}
+
+.imgDiv{
+  position: relative;
+  --label-display: none;
+  width: 270px;
+  height: 200px;
+  margin: 5px auto 5px;
+  background-image: url('../images/picture.png');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#photoLabel:hover{
+  cursor: pointer;
+}
+
+.imgDiv:hover{
+  --label-display: block;
+}
+
+.photoChanger{
+  display: none;
+}
+
+#photoLabel{
+  position: relative;
+  top: -100%;
+  height: 200px;
+  width: 270px;
+  background-image: url('../images/picture.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  display: var(--label-display);
+  z-index: 5;
 }
 
 .cardName {
@@ -149,7 +185,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 25px;
-  z-index: 2;
+  z-index: 100;
 }
 
 .addInstitutionButton:hover {

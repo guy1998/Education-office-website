@@ -8,6 +8,7 @@ const loadingElement = document.createElement('div');
 ReactDOM.render(<Loading />, loadingElement);
 overlay.appendChild(loadingElement);
 overlay.style.position = 'fixed';
+overlay.style.zIndex = '2000';
 overlay.style.top = '0';
 overlay.style.left = '0';
 overlay.style.width = '100%';
