@@ -82,6 +82,13 @@ export const addInstitution = (institution, photo, notification) => {
         } else if (response.status === 401) {
           alert("Your session has expired!");
           logOut();
+        } else if (response.status === 403) {
+          notification.add("Nuk mund te ngarkoni dokumenta qe nuk jane foto!", {
+            variant: "error"
+          });
+          setTimeout(() => {
+            notification.close();
+          }, 5000);
         } else {
           notification.add("Uups, dicka shkoi keq!", { variant: "error" });
           setTimeout(() => {
@@ -154,6 +161,13 @@ export const editInstitution = (institution, newInfo, notification) => {
         } else if (response.status === 401) {
           alert("Your session has expired");
           logOut();
+        } else if (response.status === 403) {
+          notification.add("Nuk mund te ngarkoni dokumenta qe nuk jane foto!", {
+            variant: "error"
+          });
+          setTimeout(() => {
+            notification.close();
+          }, 5000);
         } else {
           notification.add("Uups, dicka shkoi keq!", { variant: "error" });
           setTimeout(() => {
@@ -183,6 +197,13 @@ export const changePhoto = (institution, photo, notification) => {
       if (response.status === 200) {
         notification.add("Imazhi u ndryshua me sukses", {
           variant: "success"
+        });
+        setTimeout(() => {
+          notification.close();
+        }, 5000);
+      } else if (response.status === 403) {
+        notification.add("Nuk mund te ngarkoni dokumenta qe nuk jane foto!", {
+          variant: "error"
         });
         setTimeout(() => {
           notification.close();

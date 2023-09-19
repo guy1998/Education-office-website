@@ -4,10 +4,8 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const handler = require("../database/institution-handler.js");
 const authorize = require("../utilities/token.js");
-const photoUpload = require("../utilities/google-drive-api.js");
 const multer = require("multer");
 const { uploadFile, deleteFile } = require("../utilities/google-drive-api.js");
-const { deleteModel } = require("mongoose");
 
 var upload = multer({
   storage: multer.memoryStorage(),
@@ -27,12 +25,20 @@ var upload = multer({
       cb(null, true);
     } else {
       cb(null, false);
-      return cb(new Error("Only .png, .jpg and .jpeg format allowed!"));
+      return cb(new Error("Only image format allowed!"));
     }
   }
 });
 
 app.use(upload.any());
+app.use((err, req, res, next) => {
+  if (err.message === "Only image format allowed!") {
+    res.status(403).json('Should be an image');
+  } else {
+    console.log('Uncaught');
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
 app.use(bodyParser.json());
 app.use(cookieParser());
 
@@ -79,28 +85,27 @@ app.delete("/admin/delete", (req, res) => {
 });
 
 app.post("/admin/add", (req, res) => {
-  authorize(req, res, () => {
-    const photo = req.files.find(file => file.fieldname === "photo");
-    uploadFile(photo).then(data => {
+  authorize(req, res, async () => {
+      const photo = req.files.find(file => file.fieldname === "photo");
+      const data = await uploadFile(photo);
+
       if (data.response) {
-        handler
-          .addInstitution({
-            ...JSON.parse(req.body.institution),
-            photo: data.id
-          })
-          .then(result => {
-            if (result) res.status(200).json("Added successfully");
-            else res.status(304).json("Could not add!");
-          })
-          .catch(err => {
-            res.status(500).json("Server crashed!");
-          });
+        const result = await handler.addInstitution({
+          ...JSON.parse(req.body.institution),
+          photo: data.id
+        });
+
+        if (result) {
+          res.status(200).json("Added successfully");
+        } else {
+          res.status(304).json("Could not add!");
+        }
       } else {
         res.status(500).json("Could not upload with photo");
       }
-    });
   });
 });
+
 
 app.put("/admin/edit", (req, res) => {
   authorize(req, res, () => {
