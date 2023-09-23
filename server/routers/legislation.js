@@ -59,7 +59,7 @@ app.get("/admin/retrieve", (req, res) => {
 
 app.post("/admin/add", (req, res) => {
   authorize(req, res, async () => {
-    const pdf = req.files.find(file => file.fieldName === "pdf");
+    const pdf = req.files.find(file => file.fieldname === "pdf");
     const data = await uploadFile(pdf);
     if (data.response) {
       const result = await handler.addLegislation({
@@ -94,16 +94,20 @@ app.put("/admin/edit", (req, res) => {
 
 app.delete("/admin/delete", (req, res) => {
   authorize(req, res, () => {
-    handler
-      .deleteLegislation(req.body._id)
-      .then(data => {
-        if (data) res.status(200).json("Deleted successfully");
-        else res.status(304).json("Could not edit!");
-      })
-      .catch(err => {
-        console.error("Error deleting legislation:", err);
-        res.status(500).json("Could not delete legislation");
-      });
+    deleteFile(req.body.pdf).then(data => {
+      if (data) {
+        handler
+          .deleteLegislation(req.body._id)
+          .then(data => {
+            if (data) res.status(200).json("Deleted successfully");
+            else res.status(304).json("Could not edit!");
+          })
+          .catch(err => {
+            console.error("Error deleting legislation:", err);
+            res.status(500).json("Could not delete legislation");
+          });
+      }
+    });
   });
 });
 
@@ -117,7 +121,7 @@ app.put("/admin/changePdf", (req, res) => {
         newInfo.pdf = data.id;
         deleteFile(deleted).then(result => {
           handler
-            .editInstitution(newInfo._id, newInfo)
+            .editLegislation(newInfo._id, newInfo)
             .then(result => {
               if (result) res.status(200).json("Edited successfully");
               else res.status(304).json("Could not edit!");

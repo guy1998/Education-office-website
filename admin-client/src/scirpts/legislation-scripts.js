@@ -58,7 +58,7 @@ export const deleteLegislation = (legislation, notification) => {
 
 const validateLegislation = (legislation, notification) => {
   if (!legislation.title) {
-    notification.add("Titulli mungon", { variant: error });
+    notification.add("Titulli mungon", { variant: "error" });
     return false;
   }
 
@@ -66,7 +66,7 @@ const validateLegislation = (legislation, notification) => {
 };
 
 export const addLegislation = (legislation, pdf, notification) => {
-  if (validate(legislation, notification)) {
+  if (validateLegislation(legislation, notification)) {
     startLoading();
     let combinedData = new FormData();
     combinedData.append("legislation", JSON.stringify(legislation));
@@ -112,7 +112,7 @@ export const addLegislation = (legislation, pdf, notification) => {
 export const changePdf = (legislation, pdf, notification) => {
   startLoading();
   let combinedData = new FormData();
-  combinedData.append("legislation", JSON.stringify(institution));
+  combinedData.append("legislation", JSON.stringify(legislation));
   combinedData.append("pdf", pdf);
   fetch("https://localhost:5443/legislation/admin/changePdf", {
     method: "PUT",

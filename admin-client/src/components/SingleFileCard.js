@@ -3,7 +3,7 @@ import "../styles/singleFilePages.css";
 import Collapse from "react-bootstrap/Collapse";
 import EditSingleFileItem from "./EditSingleFileItem";
 
-function SingleFileCard({ singleFileItem }) {
+function SingleFileCard({ singleFileItem, code, onEdit, onDelete }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -13,7 +13,9 @@ function SingleFileCard({ singleFileItem }) {
         className="singleFileCard"
         onClick={event => {
           setOpen(!open);
-          document.getElementById(singleFileItem._id).classList.toggle("opened");
+          document
+            .getElementById(singleFileItem._id)
+            .classList.toggle("opened");
         }}
       >
         <p>
@@ -21,8 +23,15 @@ function SingleFileCard({ singleFileItem }) {
         </p>
       </div>
       <Collapse in={open}>
-        <div id="example-collapse-text">
-          <EditSingleFileItem />
+        <div className="example-collapse-text">
+          <EditSingleFileItem
+            singleFileItem={singleFileItem}
+            code={code}
+            onEdit={onEdit}
+            onDelete={() => {
+              onDelete();
+            }}
+          />
         </div>
       </Collapse>
     </div>

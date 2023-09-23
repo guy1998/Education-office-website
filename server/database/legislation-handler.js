@@ -35,8 +35,8 @@ const editLegislation = async (id, newInfo) => {
       {
         $set: {
           ...newInfo,
-          $currentDate: { lastModified: true }
-        }
+        },
+        $currentDate: { lastModified: true }
       }
     );
     return true;
