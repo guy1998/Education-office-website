@@ -7,6 +7,11 @@ import {
   editLegislation,
   deleteLegislation
 } from "../scirpts/legislation-scripts.js";
+import {
+  changeExamPdf,
+  editExam,
+  deleteExam
+} from "../scirpts/exam-scripts.js";
 import { useSnackbar } from "notistack";
 import ConfirmationModal from "./ConfirmationModal";
 
@@ -50,6 +55,8 @@ function EditSingleFileItem({ singleFileItem, code, onDelete, onEdit }) {
           event.preventDefault();
           if (code === 1)
             editLegislation(singleFileItem, { title: title }, editNotification);
+          else if(code === 2)
+            editExam(singleFileItem, {title: title, type: singleFileItem.type}, editNotification);
         }}
       />
       <label htmlFor="pdfChanger" className="changePdfButton" />
@@ -61,6 +68,8 @@ function EditSingleFileItem({ singleFileItem, code, onDelete, onEdit }) {
           event.preventDefault();
           if (code === 1)
             changePdf(singleFileItem, event.target.files[0], editNotification);
+          else if(code === 2)
+            changeExamPdf(singleFileItem, event.target.files[0], editNotification);
         }}
       />
       <button
@@ -77,6 +86,8 @@ function EditSingleFileItem({ singleFileItem, code, onDelete, onEdit }) {
         onAccept={() => {
           if (code === 1) 
             deleteLegislation(singleFileItem, deleteNotification);
+          else if(code === 2)
+            deleteExam(singleFileItem, deleteNotification);
         }}
       />
     </div>

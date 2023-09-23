@@ -1,13 +1,11 @@
 import React from "react";
 
-function OlimpPage (){
-    return(
-        <>
-            <div style={{display: 'flex', alignItems: "center", justifyContent: "center"}}>
-                <h1>OLIMP PAGE</h1>
-            </div>
-        </>
-    );
+function OlimpPage() {
+  return (
+    <div className="olimpMain">
+        
+    </div>
+  );
 }
 
 export default OlimpPage;
