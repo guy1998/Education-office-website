@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/singleFilePages.css";
+import "../styles/exams.css";
 import SingleFileCard from "./SingleFileCard";
 import MyModal from "./MyModal";
 import { retrieveLegislation } from "../scirpts/legislation-scripts.js";
@@ -26,11 +27,13 @@ function LegislationPage() {
 
   return (
     <div className="singleFileMain legislationMain">
-      {legislations.length
+      <div className="examContainer">
+        {legislations.length
         ? legislations.map(legislation => {
             return <SingleFileCard singleFileItem={legislation} code={1} onEdit={()=>setEdited(true)} onDelete={()=>setDeleted(true)}/>;
           })
         : <div style={{ display: "none" }} />}
+      </div>
       <button className="addInstitutionButton" onClick={()=>setOnAdding(true)}/>
        <MyModal show={onAdding} onHide={()=>setOnAdding(false)} heading={"Shto legjislacion"}>
           <div>

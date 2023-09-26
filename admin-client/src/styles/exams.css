@@ -10,6 +10,17 @@
   border: 2px solid transparent;
 }
 
-.olimpMain{
+.examContainer{
+  height: 100%;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.examContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.olimpMain {
   background-image: url("../images/trophy.jpeg");
 }

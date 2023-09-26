@@ -14,7 +14,7 @@ function ExamPage() {
 
   useEffect(
     () => {
-      console.log('getting');
+      console.log("getting");
       setExams([]);
       retrieveExams(data => {
         setExams(data);
@@ -28,16 +28,18 @@ function ExamPage() {
 
   return (
     <div className="examMain">
-      {exams.map(exam => {
-        return (
-          <SingleFileCard
-            singleFileItem={exam}
-            code={2}
-            onEdit={() => setEdited(true)}
-            onDelete={()=>setDeleted(true)}
-          />
-        );
-      })}
+      <div className="examContainer">
+        {exams.map(exam => {
+          return (
+            <SingleFileCard
+              singleFileItem={exam}
+              code={2}
+              onEdit={() => setEdited(true)}
+              onDelete={() => setDeleted(true)}
+            />
+          );
+        })}
+      </div>
       <button
         className="addInstitutionButton"
         onClick={() => setOnAdding(true)}

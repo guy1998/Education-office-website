@@ -1,0 +1,115 @@
+.newsMain {
+  display: flex;
+  height: 90%;
+  width: 100%;
+}
+
+.newsPlaceholder {
+  background-image: url("../images/11667183_20945035.jpeg");
+}
+
+.newsList {
+  width: 300px;
+  height: 90%;
+  border-left: 2px solid gainsboro;
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.newsContainer {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  margin-bottom: 15px;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.newsContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.newsCard {
+  width: 270px !important;
+  height: 250px !important;
+  margin: 15px auto;
+  background-color: orchid !important;
+}
+
+.newsCard:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+.newsText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.newsImage {
+  height: 200px;
+  background-image: url("../images/picture.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50px;
+  border: 2px solid white;
+}
+
+.newsForm {
+  margin: 10px auto;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#newsPhotoChanger {
+  display: none;
+}
+
+.newsPhotoLabel {
+  border: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 10px;
+  background-image: url("../images/picture.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 15px;
+  background-color: orchid;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+.newsPhotoLabel:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.fileLabel{
+  width: 90%;
+  border: 0.5px solid gainsboro;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.newsForm label div{
+  width: 50px;
+  height: 50px;
+  background-color: rgba(128, 0, 128, 0.3);
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  background-image: url('../images/picture.png');
+  background-size: 25px;
+  background-position: center;
+  background-repeat: no-repeat;
+}

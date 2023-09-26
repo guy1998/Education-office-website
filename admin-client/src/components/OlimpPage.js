@@ -22,18 +22,20 @@ function OlimpPage() {
 
   return (
     <div className="examMain olimpMain">
-      {olimps.length
-        ? olimps.map(olimp => {
-            return (
-              <SingleFileCard
-                singleFileItem={olimp}
-                code={2}
-                onEdit={() => setChanged(true)}
-                onDelete={() => setChanged(true)}
-              />
-            );
-          })
-        : <div style={{ display: "none" }} />}
+      <div className="examContainer">
+        {olimps.length
+          ? olimps.map(olimp => {
+              return (
+                <SingleFileCard
+                  singleFileItem={olimp}
+                  code={2}
+                  onEdit={() => setChanged(true)}
+                  onDelete={() => setChanged(true)}
+                />
+              );
+            })
+          : <div style={{ display: "none" }} />}
+      </div>
       <button
         className="addInstitutionButton"
         onClick={() => setOnAdding(true)}
