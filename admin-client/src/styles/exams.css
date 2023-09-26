@@ -9,3 +9,7 @@
   position: relative;
   border: 2px solid transparent;
 }
+
+.olimpMain{
+  background-image: url("../images/trophy.jpeg");
+}

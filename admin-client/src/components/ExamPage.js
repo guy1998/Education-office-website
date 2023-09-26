@@ -45,7 +45,7 @@ function ExamPage() {
       <MyModal
         show={onAdding}
         onHide={() => setOnAdding(false)}
-        heading={"Shto legjislacion"}
+        heading={"Shto njoftim mbi provimet"}
       >
         <div>
           <AddExamForm onAdd={() => setAdded(true)} />

@@ -3,11 +3,11 @@ const { ObjectId } = require("mongodb");
 
 const getExams = async examType => {
   const db = getDb();
-  const exams = db.collection("exams").find().toArray();
+  const exams = await db.collection("exams").find().toArray();
   if (examType)
-    return exams.filter(exam => {
+    return exams.length ? exams.filter(exam => {
       return exam.type === examType;
-    });
+    }) : [];
   else return exams;
 };
 

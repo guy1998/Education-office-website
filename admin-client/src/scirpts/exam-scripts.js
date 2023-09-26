@@ -54,7 +54,7 @@ export const deleteExam = (exam, notification) => {
       }
     })
     .catch(err => {
-      stopLoading();
+      //stopLoading();
       console.log(err);
     });
 };
