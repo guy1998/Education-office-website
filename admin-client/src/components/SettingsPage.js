@@ -17,7 +17,7 @@ function SettingsPage() {
   return (
     <div className="settingsMain">
       <PersonalInfo notification={notification}/>
-      <GenerateUser />
+      <GenerateUser notification={notification}/>
     </div>
   );
 }

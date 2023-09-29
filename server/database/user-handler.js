@@ -3,8 +3,12 @@ const { getDb } = require("./db.js");
 const { passwordHasher } = require("../utilities/security-ground.js");
 const userGenerator = require("../dev_tools/userGenerator");
 
-const generateUser = (name, surname, email) => {
-  userGenerator(getDb(), name, surname, email);
+const generateUser = async (user) => {
+  try{
+    await userGenerator(getDb(), user.name, user.surname, user.email);
+  }catch(err){
+    throw err;
+  }
 };
 
 const editUser = async (id, newInfo) => {
@@ -25,22 +29,6 @@ const editUser = async (id, newInfo) => {
   } catch (err) {
     console.log("Could not edit due to some error: " + err);
     return false;
-  }
-};
-
-const deleteUser = async user => {
-  if (user.type === "admin")
-    return { result: false, message: "Nuk mund te fshish admin" };
-  else {
-    try {
-      const db = getDb();
-      db.collection("user").deleteOne({
-        _id: user._id
-      });
-      return { result: true, message: "U fshi!" };
-    } catch (err) {
-      return { result: false, message: "Problem ne server!" };
-    }
   }
 };
 
@@ -68,6 +56,5 @@ const changePassword = async (id, newPassword) => {
 module.exports = {
   generateUser: generateUser,
   editUser: editUser,
-  deleteUser: deleteUser,
   changePassword: changePassword
 };

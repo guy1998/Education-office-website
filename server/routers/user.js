@@ -12,6 +12,7 @@ const {
   verifyUserNameStrength,
   passwordVerifier
 } = require("../utilities/security-ground.js");
+const userExistenceVerifier = require("../utilities/user-existence-verifier.js");
 
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -31,15 +32,40 @@ app.get("/admin/get", (req, res) => {
 });
 
 app.post("/admin/add", (req, res) => {
-  authorize(req, res, () => {
-    handler.generateUser({ ...req.body });
-    res.status(200).json("Generated successfully!");
+  authorize(req, res, async () => {
+    if (!verifyEmail(req.body.email)) {
+      res
+        .status(400)
+        .json(
+          "Email nuk eshte valid!"
+        );
+      return;
+    }
+    try {
+      await handler.generateUser({ ...req.body });
+      res.status(200).json("Generated successfully!");
+    } catch (err) {
+      if(err.message === 'Nje perdorues me kete email ose emer perdoruesi ekziston tashme!'){
+        res.status(400).json(err.message);
+        return;
+      }
+      console.log("Could not generate due to an error: " + err);
+      res.status(500).json("Server crashed!");
+    }
   });
 });
 
 app.put("/admin/edit", (req, res) => {
-  authorize(req, res, () => {
-    if (!verifyUserNameStrength(req.body.username)) {
+  authorize(req, res, async () => {
+    const existence = await userExistenceVerifier.verifyEditExistence(req);
+    if (existence) {
+      res
+        .status(400)
+        .json(
+          "Nje perdorues me kete email ose emer perdoruesi ekziston tashme!"
+        );
+      return;
+    } else if (!verifyUserNameStrength(req.body.username)) {
       res
         .status(400)
         .json(
@@ -126,17 +152,6 @@ app.put("/admin/changePassword", (req, res) => {
         console.log(err);
         res.status(500).json("Server crashed!");
       });
-  });
-});
-
-app.delete("/admin/delete", (req, res) => {
-  authorize(req, res, () => {
-    const tokens = req.cookies.tokenCookie;
-    const decoded = jwt.verify(tokens.refreshToken, process.env.JWT_KEY);
-    handler.deleteUser({ ...decoded }).then(data => {
-      if (data.result) res.status(200).json("Deleted!");
-      else res.status(400).json(data.message);
-    });
   });
 });
 
