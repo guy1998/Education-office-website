@@ -13,6 +13,8 @@ const legislation = require('./routers/legislation.js');
 const messages = require('./routers/messages.js');
 const portal = require('./routers/portal.js');
 const exams = require('./routers/exams.js');
+const user = require('./routers/user.js');
+const { generateUser } = require('./database/user-handler.js');
 
 const allowedOrigins = ['https://localhost:3456', 'https://localhost:3000'];
 
@@ -38,6 +40,7 @@ app.use('/legislation', legislation);
 app.use('/messages', messages);
 app.use('/portal', portal);
 app.use('/exams', exams);
+app.use('/user', user);
 
 const options = {
     key: fs.readFileSync('../localhost+2-key.pem'),

@@ -19,12 +19,14 @@ overlay.style.alignItems = 'center';
 overlay.style.justifyContent = 'center';
 
 export const startLoading = ()=>{
+    console.log('Loading...');
     loading = true;
     document.body.appendChild(overlay);
     document.body.style.overflow = 'hidden';
 }
 
 export const  stopLoading = ()=>{
+    console.log('Stop loading...');
     loading = false;
     document.body.removeChild(overlay);
     document.body.style.overflow = 'auto';

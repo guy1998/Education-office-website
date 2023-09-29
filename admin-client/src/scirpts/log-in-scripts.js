@@ -21,6 +21,8 @@ export const verifyOtp = (temp_id, otp, navigator) => {
     .then(data => {
       if (data) {
         localStorage.setItem("logged", true);
+        console.log(data);
+        localStorage.setItem('user', JSON.stringify(data));
         navigator("/home", { replace: true });
       } else {
         alert(
@@ -44,6 +46,7 @@ export const login = (username, password, otpchecker, notification) => {
     }),
   })
     .then(response => {
+      stopLoading();
       if (response.status === 200) return response.json();
       else if (response.status === 404) notification.add('User does not exist', {variant: 'error'});
       else notification.add('Wrong password', {variant: 'error'});
@@ -51,7 +54,6 @@ export const login = (username, password, otpchecker, notification) => {
     .then(serverData => {
       if (serverData) {
         localStorage.setItem("temporary_id", serverData.temp_id);
-        stopLoading();
         otpchecker();
       }
     });

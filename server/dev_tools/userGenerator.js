@@ -41,18 +41,20 @@ const generateRandomPassword = () => {
   return newPassword;
 }
 
-const generateRandomUser = (db) => {
+const generateRandomUser = (db, name, surname, email) => {
   const newUsername = generateRandomUsername();
   const newPassword = generateRandomPassword();
   let hashedPassword = security.passwordHasher(newPassword);
 
-  email.sendUserInfo("acifliku21@epoka.edu.al", newUsername, newPassword);
+  email.sendUserInfo(email, newUsername, newPassword);
 
   db.collection("user").insertOne({
-    "name": "random user",
-    "username": newUsername,
-    "password": hashedPassword,
-    "email": "acifliku21@epoka.edu.al"
+    name: name,
+    surname: surname,
+    username: newUsername,
+    password: hashedPassword,
+    email: email,
+    type: 'regular'
   })
 }
 

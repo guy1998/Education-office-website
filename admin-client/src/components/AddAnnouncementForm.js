@@ -73,10 +73,12 @@ function AddAnnouncementForm({ onClose, onAdd }) {
             })
           ) {
             addAnnouncement(announcement, {
-              add: enqueueSnackbar,
+              add: (message, variant)=>{
+                enqueueSnackbar(message, variant);
+                onAdd();
+              },
               close: closeSnackbar
             });
-            onAdd();
             onClose();
           }
         }}

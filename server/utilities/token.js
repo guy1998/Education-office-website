@@ -18,9 +18,11 @@ const userFromPayload = (payload) => {
   return {
     _id: payload._id,
     name: payload.name,
+    surname: payload.surname,
     username: payload.username,
     password: payload.password,
-    email: payload.email
+    email: payload.email,
+    type: payload.type
   }
 }
 

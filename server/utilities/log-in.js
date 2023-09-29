@@ -48,5 +48,6 @@ const tokenIssuing = async (userid) => {
 module.exports = {
     firstAuthentication: firstAuthentication,
     secondAuthentication: secondAuthentication,
-    tokenIssuing: tokenIssuing
+    tokenIssuing: tokenIssuing,
+    getUserById: getUserById
 }

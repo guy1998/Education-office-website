@@ -34,8 +34,14 @@ app.post("/otp", (req, res) => {
         secure: true,
         sameSite: "none"
       });
-
-      res.status(200).json({ msg: "token sent through cookie" });
+      logger.getUserById(security.id_decrypter(req.body.temp_id)).then(user => {
+        res.status(200).json({
+          name: user.name,
+          surname: user.surname,
+          email: user.email,
+          username: user.username
+        });
+      });
     });
   } else if (result.code === 2) res.status(401).json("Wrong OTP");
   else if (result.code === 3) res.status(404).json("OTP has expired");
