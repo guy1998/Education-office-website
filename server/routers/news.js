@@ -47,6 +47,7 @@ app.get("/retrieve", async (req, res) => {
     const news = await handler.getAllNews();
     res.status(200).json(news);
   } catch (err) {
+    console.log(err);
     res.status(500).json("Server crashed!");
   }
 });
