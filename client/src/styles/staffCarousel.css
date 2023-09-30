@@ -1,0 +1,155 @@
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.carousel {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.carousel-button {
+  border-radius: 50%;
+  border: 5px solid transparent;
+  border-image: linear-gradient(to right, #f89b29 0%, #ff0f7b 100%);
+  border-image-slice: 1;
+  width: 60px;
+  height: 60px;
+  background-color: transparent;
+  margin: 0 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 25px;
+}
+
+#leftButton{
+    background-image: url('../images/angle-double-left.png');
+}
+
+#rightButton{
+    background-image: url('../images/angle-double-right.png');
+}
+
+.staff-card-container {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  margin: auto 12.5px;
+}
+
+.staff-card {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.staff-card .staff-front-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(36, 35, 35);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.staff-card .staff-front-content p {
+  font-size: 32px;
+  font-weight: 700;
+  opacity: 1;
+  background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.staff-card .staff-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+  color: #e8e8e8;
+  padding: 20px;
+  line-height: 1.5;
+  border-radius: 5px;
+  pointer-events: none;
+  transform: translateX(-96%);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.staff-card .staff-content .heading {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.staff-card:hover .staff-content {
+  transform: translateY(0);
+}
+
+.staff-card:hover .staff-front-content {
+  transform: translateX(-30%);
+}
+
+.staff-card:hover .staff-front-content p {
+  opacity: 0;
+}
+
+.zitat1 {
+  position: relative;
+  font-family: "Verdana", serif;
+  font-size: 14pt;
+  line-height: 1.5em;
+  animation: jumpIn 1s ease forwards !important;
+}
+.zitat1 cite {
+  font-family: "Verdana", sans-serif;
+  font-size: 0.6em;
+  font-weight: 700;
+  color: black;
+  float: right;
+}
+.zitat1 cite:before {
+  content: "\2015"" ";
+}
+.zitat1:after {
+  content: "\201d";
+  position: absolute;
+  top: 0.28em;
+  right: 0px;
+  font-size: 6em;
+  font-style: italic;
+  color: #bdbec0;
+  z-index: -1;
+}
+
+.staffDivision{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes jumpIn {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }

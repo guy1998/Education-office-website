@@ -8,3 +8,10 @@ body{
     margin: 0;
     font-family: Poppins !important;
 }
+
+.divisionContainer{
+    background-color: transparent;
+    height: 600px;
+    width: 100%;
+    position: relative;
+}
