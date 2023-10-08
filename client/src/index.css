@@ -1,17 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,500&family=Poppins:ital,wght@0,400;0,500;1,600&family=Righteous&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,500&family=Poppins:ital,wght@0,400;0,500;1,600&family=Righteous&display=swap");
 
 /* :root{
     font-family: Poppins;
 } */
 
-body{
-    margin: 0;
-    font-family: Poppins !important;
+body {
+  margin: 0;
+  font-family: Poppins !important;
 }
 
-.divisionContainer{
-    background-color: transparent;
-    height: 600px;
-    width: 100%;
-    position: relative;
+.divisionContainer {
+  background-color: transparent;
+  height: 600px;
+  width: 100%;
+  position: relative;
+  margin-bottom: 105px;
+}
+
+.headers {
+  display: none;
+}
+
+.jump-in {
+  display: block;
+  animation: jumpIn 2s ease forwards !important;
+}
+
+@keyframes jumpIn {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

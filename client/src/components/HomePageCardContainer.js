@@ -20,6 +20,7 @@ function HomePageCardContainer() {
         content={"Njihuni me stafin tuaj të arsimit! Jemi një 'click' larg!"}
         img={staffImg}
         id='firstCard'
+        href={'staffDivision'}
       />
       <HomePageCard
         title="Kërkesat"

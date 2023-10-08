@@ -1,84 +1,96 @@
 .button1 {
-    font-family: inherit;
-    font-size: 20px;
-    background: purple;
-    color: white;
-    padding: 0.7em 1em;
-    padding-left: 0.9em;
-    display: flex;
-    align-items: center;
-    border: none;
-    border-radius: 16px;
-    overflow: hidden;
-    transition: all 0.2s;
-  }
-  
-  .button1 span {
-    display: block;
-    margin-left: 0.3em;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .button1 svg {
-    display: block;
-    transform-origin: center center;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .button1:hover .svg-wrapper {
-    animation: fly-1 0.6s ease-in-out infinite alternate;
-  }
-  
-  .button1:hover svg {
-    transform: translateX(1.2em) rotate(45deg) scale(1.1);
-  }
-  
-  .button1:hover span {
-    transform: translateX(5em);
-  }
-  
-  .button1:active {
-    transform: scale(0.95);
-  }
-  
-  @keyframes fly-1 {
-    from {
-      transform: translateY(0.1em);
-    }
-  
-    to {
-      transform: translateY(-0.1em);
-    }
+  font-family: inherit;
+  font-size: 20px;
+  background: royalblue;
+  color: white;
+  padding: 0.7em 1em;
+  padding-left: 0.9em;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.button1 span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+
+.button1 svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.button1:hover .svg-wrapper {
+  animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+.button1:hover svg {
+  transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+.button1:hover span {
+  transform: translateX(5em);
+}
+
+.button1:active {
+  transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
   }
 
-  
-  #layout{
-    width: 100%;
-    height: 850px;
-    position: absolute;
-    background-color: rgba(0,0,0,0.3);
-    display: none;
-    z-index: 2;
-    margin-top: -50px !important;
+  to {
+    transform: translateY(-0.1em);
   }
+}
 
-  #messageForm{
-    background-color: white;
-    width: 500px;
-    height: 400px;
-    margin: 100px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 25px;
-  }
+form{
+  background-color: transparent;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  #messageForm h4{
-    margin-bottom: 5px;
-  }
+form div{
+  width: 90% !important;
+}
 
-  #messageError{
-    margin: 0 auto;
-    color: red;
-  }
+.messageDiv{
+  width: 100%;
+  height: 650px;
+  background-color:rgb(245, 245, 235);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.messageDiv .innerDiv{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+}
+
+.messageDiv .descriptionDiv{
+  width: 30%;
+  text-align: center;
+}
+
+.messageDiv .imageDiv{
+  height: 200px;
+  width: 200px;
+  background-image: url('../images/speaker.png');
+  background-position: center;
+  background-size: 100px;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+}

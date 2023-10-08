@@ -1,39 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/staffCarousel.css";
 import StaffCard from "./StaffCard";
+import {getStaff} from "../scripts/staff-scripts";
 
-function StaffCarousel() {
+function StaffCarousel({isVisible}) {
+
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const items = [
-    "Item 1",
-    "Item 2",
-    "Item 3",
-    "Item 4",
-    "Item 5",
-    "Item 6",
-    "Item 7",
-    "Item 8",
-    "Item 9"
-  ];
+  const [staff, setStaff] = useState([])
+  useEffect(()=>{
+    getStaff((data)=>setStaff(data));
+  }, [])
 
   const handleClick = direction => {
     const newIndex = currentIndex + direction;
 
-    if (newIndex >= 0 && newIndex <= items.length - 3) {
+    if (newIndex >= 0 && newIndex <= staff.length - 3) {
       setCurrentIndex(newIndex);
     }
   };
 
   return (
     <div className="carousel-container">
-      <button id="leftButton" onClick={() => handleClick(-1)} className='carousel-button'></button>
+      <button
+        id="leftButton"
+        onClick={() => handleClick(-1)}
+        className={isVisible ? "carousel-button jump-in" : "carousel-button"}
+      />
       <div className="carousel">
-        {items.slice(currentIndex, currentIndex + 3).map((item, index) =>
-          <StaffCard staff={item} key={index}/>
-        )}
+        {staff
+          .slice(currentIndex, currentIndex + 3)
+          .map((item, index) =>
+            <StaffCard
+              staff={item}
+              key={index}
+              animation={isVisible ? "jump-in" : ""}
+            />
+          )}
       </div>
-      <button id="rightButton" onClick={() => handleClick(1)} className='carousel-button'></button>
+      <button
+        id="rightButton"
+        onClick={() => handleClick(1)}
+        className={isVisible ? "carousel-button jump-in" : "carousel-button"}
+      />
     </div>
   );
 }
