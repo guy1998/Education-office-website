@@ -25,6 +25,8 @@ function HomePageCard({ title, content, img, id, href }) {
         onClick={() => {
           if(href)
             document.getElementById(href).scrollIntoView({ behavior: "smooth" });
+          else
+            window.location.href = "/institucione"
         }}
         id={id + "link"}
       />

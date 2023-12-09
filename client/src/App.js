@@ -3,12 +3,14 @@ import Footer from "./components/Footer";
 import BottomLine from "./components/BottomLine";
 import { Helmet } from 'react-helmet';
 import NavBar from "./components/NavBar";
-import MainImage from "./components/MainImage";
-import HomePageCardContainer from "./components/HomePageCardContainer";
-import StaffDivision from "./components/StaffDivision";
-import AboutUs from "./components/AboutUs";
-import Goal from "./components/Goal";
-import MessageDiv from "./components/MessageDiv";
+import HomePage from "./pages/HomePage";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import InstiutionsPage from "./pages/InstitutionsPage";
+import AnnouncementPage from "./pages/AnnouncementPage";
+import ExamPage from "./pages/ExamPage";
+import LegislationsPage from "./pages/LegislationsPage";
+import NewsPage from "./pages/NewsPage";
+import OlimpPage from "./pages/OlimpPage";
 
 function App() {
 
@@ -18,14 +20,17 @@ function App() {
         <meta http-equiv="X-Frame-Options" content="deny" />
       </Helmet>
       <NavBar />
-      <div className="divisionContainer">
-        <MainImage />
-        <HomePageCardContainer />
-      </div>
-      <AboutUs />
-      <Goal />
-      <StaffDivision />
-      <MessageDiv />
+      <Router >
+        <Routes>
+          <Route path="/" element={<HomePage/>} />
+          <Route path="/institucione" element={<InstiutionsPage />} />
+          <Route path="/lajme" element={<NewsPage />} />
+          <Route path="/provimet_kombetare" element={<ExamPage />} />
+          <Route path="/olimpiada" element={<OlimpPage />} />
+          <Route path="/legjislacioni" element={<LegislationsPage />} />
+          <Route path="/njoftime" element={<AnnouncementPage />} />
+        </Routes>
+      </Router>
       <Footer />
       <BottomLine />
     </>

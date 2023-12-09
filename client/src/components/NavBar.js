@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { useNavigate } from "react-router";
 
 function NavBar() {
   return (
@@ -22,16 +23,16 @@ function NavBar() {
             className="me-auto my-2 my-lg-0"
             navbarScroll
           >
-            <Nav.Link href="#home">Kreu</Nav.Link>
-            <Nav.Link href="#link">Njoftimet</Nav.Link>
-            <Nav.Link href="#link">Lajmet</Nav.Link>
-            <Nav.Link href="#link">Provimet Kombëtare</Nav.Link>
+            <Nav.Link href="/">Kreu</Nav.Link>
+            <Nav.Link href="/njoftime">Njoftimet</Nav.Link>
+            <Nav.Link href="/lajme">Lajmet</Nav.Link>
+            <Nav.Link href="/provimet_kombetare">Provimet Kombëtare</Nav.Link>
             <NavDropdown title="Menu" id="nav-dropdown-dark-example" menuVariant="dark">
-              <NavDropdown.Item href="#action/3.1">Institucionet</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
+              <NavDropdown.Item href="/institucione">Institucionet</NavDropdown.Item>
+              <NavDropdown.Item href="/legjislacioni">
                 Legjislacioni
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Olimpiadat</NavDropdown.Item>
+              <NavDropdown.Item href="/olimpiada">Olimpiadat</NavDropdown.Item>
               <NavDropdown.Divider />
             </NavDropdown>
           </Nav>
