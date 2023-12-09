@@ -43,8 +43,8 @@ app.use('/exams', exams);
 app.use('/user', user);
 
 const options = {
-    key: fs.readFileSync('../localhost+2-key.pem'),
-    cert: fs.readFileSync('../localhost+2.pem'),
+    key: fs.readFileSync('./localhost.decrypted.key'),
+    cert: fs.readFileSync('./localhost.crt'),
 };
 const port = 5443;
 const server = https.createServer(options, app);
