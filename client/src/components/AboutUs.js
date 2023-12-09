@@ -30,12 +30,8 @@ function AboutUs() {
       <div className={isVisible ? "stuff jump-in" : "stuff"}>
         <div className={isVisible ? "aboutText jump-in" : "aboutText"}>
           <p>
-            Contrary to popular belief, Lorem Ipsum is not simply random text.
-            It has roots in a piece of classical Latin literature from 45 BC,
-            making it over 2000 years old. Richard McClintock, a Latin professor
-            at Hampden-Sydney College in Virginia, looked up one of the more
-            obscure Latin words, consectetur, from a Lorem Ipsum passage, and
-            going through the cites of the word in classical literature,.
+          Zyra Vendore e Arsimit Parauniversitar (ZVAP), ka për detyrë të menaxhojë, të monitorojë, të këshillojë dhe të informojë të gjitha institucionet arsimore për zbatimin e strategjisë kombëtare duke garantuar një shërbim arsimor sa më cilësor dhe gjithpërfshirës.
+Burimet njerëzore profesionale dhe administrim i tyre, ka ndikim të drejtpërdrejtë për të përmirësuar dhe për të vijuar më tej me rritjen e cilësisë së shërbimit arsimor dhe respektimin e akteve ligjore e nënligjore në fuqi.
           </p>
         </div>
         <div className={isVisible ? "aboutStats jump-in" : "aboutStats"}>

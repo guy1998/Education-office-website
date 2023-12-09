@@ -1,9 +1,10 @@
 import React from "react";
+import PageTitle from "../components/PageTitle";
 
 function OlimpPage(){
     return (
-        <div style={{height: "100vh", margin: "auto"}}>
-            Olimp Page
+        <div className="pageContainer">
+            <PageTitle title={"Olimpiadat"} />
         </div>
     )
 }

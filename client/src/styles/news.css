@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+i {
+    color: #888;
+}
+
+.newscard {
+    height: 120px;
+    width: 90%;
+    margin: 5px auto;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: #fff;
+    font-family: 'Raleway', sans-serif;
+    line-height: 1.5;
+    font-size: 1rem;
+    color: #444;
+}
+
+.newscard:hover {
+    cursor: pointer;
+    transform: scale(1.05) !important;
+}
+
+.newscard div:first-child {
+    flex-basis: 35%;
+}
+
+.newscard div:last-child {
+    flex-basis: 65%;
+    padding: 0 0.5rem 0.25rem;
+}
+
+.newscard img {
+    display: block;
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.newscard p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.35rem;
+}
+
+.shadow {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.curve {
+    border-radius: 0.35rem;
+}
+
+.newsList {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 2px solid gainsboro;
+    border-left: 2px solid gainsboro;
+    height: 100%;
+    min-height: 90vh;
+    margin: 15px 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        /* Start with zero opacity */
+    }
+
+    to {
+        opacity: 1;
+        /* End with full opacity */
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in;
+    /* Animation name, duration, and timing function */
+}
+
+.newsPlaceholder {
+    margin: 0 15px 0 0;
+}
+
+@media (min-width: 768px) {
+    .newscard div:first-child {
+        flex-basis: 30%;
+    }
+
+    .newscard div:last-child {
+        flex-basis: 70%;
+    }
+}

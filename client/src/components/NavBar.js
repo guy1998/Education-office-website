@@ -16,7 +16,7 @@ function NavBar() {
       className="bg-body-tertiary"
     >
       <Container>
-        <Navbar.Brand href="#home">ZVAP Berat</Navbar.Brand>
+        <Navbar.Brand href="/">ZVAP Berat</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll" className="justify-content-end">
           <Nav

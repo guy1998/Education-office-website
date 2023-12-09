@@ -1,9 +1,10 @@
 import React from "react";
+import PageTitle from "../components/PageTitle";
 
 function InstitutionsPage(){
     return (
-        <div style={{height: "100vh", margin: "auto"}}>
-           <h1> Institutions Page </h1>
+        <div className="pageContainer">
+           <PageTitle title={"Insititucionet"} />
         </div>
     )
 }

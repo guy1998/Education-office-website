@@ -24,7 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage/>} />
           <Route path="/institucione" element={<InstiutionsPage />} />
-          <Route path="/lajme" element={<NewsPage />} />
+          <Route path="/lajme/*" element={<NewsPage />} />
           <Route path="/provimet_kombetare" element={<ExamPage />} />
           <Route path="/olimpiada" element={<OlimpPage />} />
           <Route path="/legjislacioni" element={<LegislationsPage />} />

@@ -1,0 +1,28 @@
+.pageContainer{
+    padding: 100px 50px 0 50px;
+    min-height: 100vh;
+    margin: auto
+}
+
+.pageTitle{
+    display: flex;
+}
+
+.pageTitle h1{
+    background: linear-gradient(to right, salmon, gold);
+    -webkit-text-fill-color: transparent; 
+    -webkit-background-clip: text; 
+}
+
+.greyLine{
+    background-image: linear-gradient(to right, grey, gainsboro);
+    width: 100%;
+    height: 5px;
+    margin: auto 10px;
+}
+
+.horizontalMain{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

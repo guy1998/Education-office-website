@@ -1,9 +1,10 @@
 import React from "react";
+import PageTitle from "../components/PageTitle";
 
 function AnnouncementPage(){
     return (
-        <div style={{height: "100vh", margin: "auto"}}>
-            Announcement Page
+        <div className="pageContainer">
+            <PageTitle title={"Njoftimet"} />
         </div>
     )
 }
