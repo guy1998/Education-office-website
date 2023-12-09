@@ -205,3 +205,17 @@
       opacity: 1;
     }
   }
+
+  @media (max-width: 480px) {
+    .staff-card:active .staff-content {
+      transform: translateY(0);
+    }
+    
+    .staff-card:active .staff-front-content {
+      transform: translateX(-30%);
+    }
+    
+    .staff-card:active .staff-front-content p {
+      display: none;
+    }
+  }

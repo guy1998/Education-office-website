@@ -1,18 +1,15 @@
-.container-fluid {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  margin-left: auto !important;
-  width: 87% !important;
-}
-
-.navbar-collapse {
-  margin-left: 460px;
+.bg-body-tertiary {
+  max-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between !important;
+  position: relative;
 }
 
 .navbar-brand {
   font-weight: bold;
   font-size: 20pt !important;
+  color: white !important;
 }
 
 .nav-item {
@@ -32,7 +29,7 @@
 .nav-link {
   position: relative;
   margin-right: 5px;
-  color: gray;
+  color: gray !important;
 }
 
 .nav-link::after {
@@ -55,6 +52,7 @@
 .nav-link:hover::after {
   transform: scaleX(1) !important;
   transform-origin: bottom left !important;
+  color: transparent !important;
 }
 
 .mainImageDiv {
@@ -129,12 +127,12 @@
   animation: jumpIn 1s ease forwards !important;
 }
 
-#firstCard{
-    animation-duration: 1.5s !important;
+#firstCard {
+  animation-duration: 1.5s !important;
 }
 
-#secondCard{
-    animation-duration: 1.8s !important;
+#secondCard {
+  animation-duration: 1.8s !important;
 }
 
 .card img {
@@ -185,24 +183,78 @@
   line-height: 1.4;
 }
 
-.cardContainer{
-    position: absolute;
-    display: flex;
-    align-items:last baseline;
-    justify-content: center;
-    bottom: 0px;
-    left: 11%;
-    height: 300px;
-    width: 80%;
+.cardContainer {
+  position: absolute;
+  display: flex;
+  align-items: last baseline;
+  justify-content: center;
+  bottom: 0px;
+  left: 11%;
+  height: 300px;
+  width: 80%;
 }
 
 @keyframes jumpIn {
-    0% {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
   }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 769px) {
+  .navbar-collapse {
+    position: absolute;
+    right: 8%;
+  }
+
+  #nav-dropdown-dark-example{
+    margin: auto 0;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .title{
+    font-size: 35pt;
+  }
+
+  .smallMoto{
+    width: 250px;
+    font-size: 10pt;
+  }
+
+  .castleHolder{
+    background-size: 25px;
+    bottom: -2%;
+  }
+
+  #leftCastle {
+    left: 3%;
+  }
+  
+  #rightCastle {
+    right: -13%;
+  }
+
+  .mainImageDiv{
+    background-position: center;
+  }
+
+  .divisionContainer{
+    height: 850px;
+  }
+
+  .cardContainer{
+    flex-direction: column;
+    margin: auto auto;
+    height: 500px;
+  }
+
+  .card{
+    margin: 25px 0;
+  }
+}

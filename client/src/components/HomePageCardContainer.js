@@ -29,6 +29,7 @@ function HomePageCardContainer() {
         }
         img={complaintImg}
         id='secondCard'
+        href="messageDiv"
       />
     </div>
   );

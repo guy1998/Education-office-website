@@ -25,7 +25,7 @@ function MessageDiv() {
   }, []);
 
   return (
-    <div className="messageDiv" ref={ref}>
+    <div className="messageDiv" id="messageDiv" ref={ref}>
       <h1 className={isVisible ? "headers jump-in" : "headers"}>Hapësira e qytetarit</h1>
       <div className="innerDiv">
         <ComplaintForm animationClass={isVisible ? 'jump-in' : ''}/>

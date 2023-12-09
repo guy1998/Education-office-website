@@ -18,6 +18,26 @@ function ComplaintForm({ animationClass }) {
     replica[fieldName] = newValue;
     setNewMessage(replica);
   };
+  const clear = () => {
+    setNewMessage({
+      header: "",
+      body: "",
+      writer: "",
+      email: "",
+      date: new Date().toDateString()
+    });
+    let inputs = document.querySelectorAll("input");
+    inputs.forEach(input => {
+      input.value = "";
+    });
+    let textarea = document.querySelector('textarea');
+    textarea.value = '';
+  };
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const notification = {
+    add: enqueueSnackbar,
+    close: closeSnackbar
+  };
 
   return (
     <form>
@@ -33,7 +53,7 @@ function ComplaintForm({ animationClass }) {
         />
       </FloatingLabel>
       <FloatingLabel
-        style={{animationDelay: '1s'}}
+        style={{ animationDelay: "1s" }}
         controlId="floatingTextarea2"
         className={"formItem " + animationClass}
         label="Përshkrimi"
@@ -46,7 +66,7 @@ function ComplaintForm({ animationClass }) {
         />
       </FloatingLabel>
       <FloatingLabel
-        style={{animationDelay: '1.5s'}}
+        style={{ animationDelay: "1.5s" }}
         controlId="floatingInput"
         label="Emri i plotë"
         className={"mb-3 formItem " + animationClass}
@@ -58,7 +78,7 @@ function ComplaintForm({ animationClass }) {
         />
       </FloatingLabel>
       <FloatingLabel
-        style={{animationDelay: '2s'}}
+        style={{ animationDelay: "2s" }}
         controlId="floatingInput"
         label="Adresa e-mail"
         className={"mb-3 formItem " + animationClass}
@@ -70,17 +90,13 @@ function ComplaintForm({ animationClass }) {
         />
       </FloatingLabel>
       <button
-        style={{animationDelay: '2.5s'}}
+        style={{ animationDelay: "2.5s" }}
         className={"button1 " + animationClass}
         onClick={event => {
           event.preventDefault();
+          const result = sendMessage(newMessage, notification);
+          if (result) clear();
         }}
-        disabled={
-          newMessage.header === "" ||
-          newMessage.body === "" ||
-          newMessage.writer === "" ||
-          newMessage.email
-        }
       >
         <div class="svg-wrapper-1">
           <div class="svg-wrapper">

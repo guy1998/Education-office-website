@@ -1,81 +1,43 @@
 import React from "react";
 import "../styles/navbar.css";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 function NavBar() {
   return (
-    <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-      <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          ZVAP Berat
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Kreu
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Njoftimet
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Lajmet
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Provimet kombëtare
-              </a>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Menu
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <Navbar
+      expand="lg"
+      bg="dark"
+      fixed="top"
+      data-bs-theme="dark"
+      className="bg-body-tertiary"
+    >
+      <Container>
+        <Navbar.Brand href="#home">ZVAP Berat</Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll" className="justify-content-end">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            navbarScroll
+          >
+            <Nav.Link href="#home">Kreu</Nav.Link>
+            <Nav.Link href="#link">Njoftimet</Nav.Link>
+            <Nav.Link href="#link">Lajmet</Nav.Link>
+            <Nav.Link href="#link">Provimet Kombëtare</Nav.Link>
+            <NavDropdown title="Menu" id="nav-dropdown-dark-example" menuVariant="dark">
+              <NavDropdown.Item href="#action/3.1">Institucionet</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                Legjislacioni
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Olimpiadat</NavDropdown.Item>
+              <NavDropdown.Divider />
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 
